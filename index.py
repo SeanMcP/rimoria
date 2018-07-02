@@ -1,24 +1,59 @@
 import random
 
-print('''                                                                            
-     ***** ***                                                               
-  ******  * **  *                                            *               
- **   *  *  ** ***                                          ***              
-*    *  *   **  *                                            *               
-    *  *    *                          ****   ***  ****                      
-   ** **   *  ***   *** **** ****     * ***  * **** **** * ***       ****    
-   ** **  *    ***   *** **** ***  * *   ****   **   ****   ***     * ***  * 
-   ** ****      **    **  **** **** **    **    **           **    *   ****  
-   ** **  ***   **    **   **   **  **    **    **           **   **    **   
-   ** **    **  **    **   **   **  **    **    **           **   **    **   
-   *  **    **  **    **   **   **  **    **    **           **   **    **   
-      *     **  **    **   **   **  **    **    **           **   **    **   
-  ****      *** **    **   **   **   ******     ***          **   **    **   
- *  ****    **  *** * ***  ***  ***   ****       ***         *** * ***** **  
-*    **     *    ***   ***  ***  ***                          ***   ***   ** 
-*                                                                            
- **                 A text-based adventure game in Python                 
-''')
+# print('''                                                                            
+#      ***** ***                                                               
+#   ******  * **  *                                            *               
+#  **   *  *  ** ***                                          ***              
+# *    *  *   **  *                                            *               
+#     *  *    *                          ****   ***  ****                      
+#    ** **   *  ***   *** **** ****     * ***  * **** **** * ***       ****    
+#    ** **  *    ***   *** **** ***  * *   ****   **   ****   ***     * ***  * 
+#    ** ****      **    **  **** **** **    **    **           **    *   ****  
+#    ** **  ***   **    **   **   **  **    **    **           **   **    **   
+#    ** **    **  **    **   **   **  **    **    **           **   **    **   
+#    *  **    **  **    **   **   **  **    **    **           **   **    **   
+#       *     **  **    **   **   **  **    **    **           **   **    **   
+#   ****      *** **    **   **   **   ******     ***          **   **    **   
+#  *  ****    **  *** * ***  ***  ***   ****       ***         *** * ***** **  
+# *    **     *    ***   ***  ***  ***                          ***   ***   ** 
+# *                                                                            
+#  **                 A text-based adventure game in Python                 
+# ''')
+
+location = [[ 0, 0 ]]
+
+def navigate(direction):
+    global location
+    current_loc = location[0]
+    x, y = current_loc[0], current_loc[1]
+
+    if direction == 'back':
+        if len(location) > 1:
+            location = location[1:]
+            return print(location)
+        else:
+            return print('You cannot go back')
+    elif direction == 'north':
+        new_loc = [ x, y + 1 ]
+    elif direction == 'south':
+        new_loc = [ x, y - 1 ]
+    elif direction == 'east':
+        new_loc = [ x + 1, y ]
+    elif direction == 'west':
+        new_loc = [ x - 1, y ]
+    
+    location.insert(0, new_loc)
+    location = location[:10]
+
+    print(location)
+    
+# navigate('north')
+# navigate('north')
+# navigate('north')
+# navigate('back')
+# navigate('back')
+# navigate('back')
+# navigate('back')
 
 class Hero:
     def __init__(self, name, hitpoints=100, attackpoints=10, status='alive'):
@@ -46,7 +81,7 @@ class Hero:
             else:
                 print('Why hit someone while they\'re down?')
 
-hero_name = str(input('What is your name, hero? '))
-hero = Hero(hero_name)
+# hero_name = str(input('What is your name, hero? '))
+# hero = Hero(hero_name)
 
-print(f'Welcome, {hero.name}, to the land of Rimoria!')
+# print(f'Welcome, {hero.name}, to the land of Rimoria!')
