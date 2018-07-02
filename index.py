@@ -26,8 +26,8 @@ terrains = ['plain', 'forest', 'mountain', 'cave']
 
 def navigate(direction):
     global location
-    current_coordinates = location[0]
-    x, y = current_coordinates[0], current_coordinates[1]
+    current_location = location[0]
+    x, y = current_location[0], current_location[1]
 
     if direction == 'back':
         if len(location) > 1:
@@ -48,10 +48,9 @@ def navigate(direction):
 
     global world_map
     if coordinate_string not in world_map:
-        new_location = {
+        world_map[coordinate_string] = {
             'terrain': terrains[random.randint(0, len(terrains) - 1)]
         }
-        world_map[coordinate_string] = new_location
 
     location.insert(0, new_coordinates)
     location = location[:10]
