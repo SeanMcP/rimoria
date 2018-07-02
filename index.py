@@ -20,12 +20,14 @@ import random
 #  **                 A text-based adventure game in Python                 
 # ''')
 
-location = [[ 0, 0 ]]
+world_map = { '0,0': { 'terrain': 'plain' } }
+location = [[0,0]]
+terrains = ['plain', 'forest', 'mountain', 'cave']
 
 def navigate(direction):
     global location
-    current_loc = location[0]
-    x, y = current_loc[0], current_loc[1]
+    current_coordinates = location[0]
+    x, y = current_coordinates[0], current_coordinates[1]
 
     if direction == 'back':
         if len(location) > 1:
@@ -34,23 +36,33 @@ def navigate(direction):
         else:
             return print('You cannot go back')
     elif direction == 'north':
-        new_loc = [ x, y + 1 ]
+        new_coordinates = [ x, y + 1 ]
     elif direction == 'south':
-        new_loc = [ x, y - 1 ]
+        new_coordinates = [ x, y - 1 ]
     elif direction == 'east':
-        new_loc = [ x + 1, y ]
+        new_coordinates = [ x + 1, y ]
     elif direction == 'west':
-        new_loc = [ x - 1, y ]
+        new_coordinates = [ x - 1, y ]
     
-    location.insert(0, new_loc)
+    coordinate_string = ','.join(map(str, new_coordinates))
+
+    global world_map
+    if coordinate_string not in world_map:
+        new_location = {
+            'terrain': terrains[random.randint(0, len(terrains) - 1)]
+        }
+        world_map[coordinate_string] = new_location
+
+    location.insert(0, new_coordinates)
     location = location[:10]
 
     print(location)
+    print(world_map)
     
+navigate('north')
 # navigate('north')
 # navigate('north')
-# navigate('north')
-# navigate('back')
+navigate('back')
 # navigate('back')
 # navigate('back')
 # navigate('back')
