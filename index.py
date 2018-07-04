@@ -28,7 +28,7 @@ location = ['0,0']
 def print_location():
         print(location[0], world_map[location[0]].type)
 
-print_location()
+# print_location()
 
 def navigate(direction):
     global location, world_map
@@ -61,13 +61,34 @@ def navigate(direction):
 
     print_location()
     
-navigate('north')
-navigate('back')
-navigate('east')
-navigate('east')
-navigate('east')
-navigate('east')
-navigate('back')
+def search(player):
+    print('Searching for resources')
+    square = world_map[location[0]]
+    multiplier = 1
+    if square.type is 'cave' or square.type is 'mountain' or square.type is 'lake':
+        player.tire(2)
+        multiplier = 2
+    else:
+        player.tire()
+    product = square.produce()
+    if product is not None:
+        print(f'You found one {product}')
+        return player.collect(product, multiplier)
+    return print('You found nothing')
+
+player = Explorer('Sean')
+player.checkup()
+search(player)
+print(player.inventory)
+player.checkup()
+
+# navigate('north')
+# navigate('back')
+# navigate('east')
+# navigate('east')
+# navigate('east')
+# navigate('east')
+# navigate('back')
 # navigate('back')
 # navigate('back')
 # navigate('back')

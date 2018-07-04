@@ -1,14 +1,5 @@
 import random
 
-# terrains = ('forest', 'plain', 'mountain', 'cave', 'lake')
-# resources = {
-#     'forest': 'wood',
-#     'plain': 'worms',
-#     'mountain': 'rocks',
-#     'cave': 'gems',
-#     'lake': 'fish'
-# }
-
 class MapSquare:
     terrains = ('forest', 'plain', 'mountain', 'cave', 'lake')
     resources = {
@@ -32,8 +23,8 @@ class MapSquare:
             return self.resource_type
         return None
 
-square = MapSquare('plain')
-print(square.type)
-print(square.resource_count)
-print(square.produce())
-print(square.resource_count)
+# square = MapSquare('plain')
+# print(square.type)
+# print(square.resource_count)
+# print(square.produce())
+# print(square.resource_count)
