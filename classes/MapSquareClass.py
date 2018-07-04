@@ -21,12 +21,12 @@ class MapSquare:
         # New terrain has a 50% chance of being the same
         # as preivous terrain
         self.type = prev_terrain if random.randint(0, 1) is 1 else self.terrains[random.randint(0, len(self.terrains) - 1)]
-        self.resource_count = random.randint(0, 5)
+        self.resource_count = random.randint(0, 5) - 1
         self.resource_type = self.resources[self.type]
         self.square_description = self.description[self.type]
     
     def produce(self):
-        if self.resource_count:
+        if self.resource_count > 0:
             self.resource_count -= 1
             return self.resource_type
         return None
