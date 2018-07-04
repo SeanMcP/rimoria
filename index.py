@@ -2,33 +2,11 @@ import random
 from classes.ExplorerClass import Explorer
 from classes.MapSquareClass import MapSquare
 
-# print('''                                                                            
-#      ***** ***                                                               
-#   ******  * **  *                                            *               
-#  **   *  *  ** ***                                          ***              
-# *    *  *   **  *                                            *               
-#     *  *    *                          ****   ***  ****                      
-#    ** **   *  ***   *** **** ****     * ***  * **** **** * ***       ****    
-#    ** **  *    ***   *** **** ***  * *   ****   **   ****   ***     * ***  * 
-#    ** ****      **    **  **** **** **    **    **           **    *   ****  
-#    ** **  ***   **    **   **   **  **    **    **           **   **    **   
-#    ** **    **  **    **   **   **  **    **    **           **   **    **   
-#    *  **    **  **    **   **   **  **    **    **           **   **    **   
-#       *     **  **    **   **   **  **    **    **           **   **    **   
-#   ****      *** **    **   **   **   ******     ***          **   **    **   
-#  *  ****    **  *** * ***  ***  ***   ****       ***         *** * ***** **  
-# *    **     *    ***   ***  ***  ***                          ***   ***   ** 
-# *                                                                            
-#  **                 A text-based adventure game in Python                 
-# ''')
-
 world_map = { '0,0': MapSquare() }
 location = ['0,0']
 
 def print_location():
         print(location[0], world_map[location[0]].type)
-
-# print_location()
 
 def navigate(direction):
     global location, world_map
@@ -76,11 +54,53 @@ def search(player):
         return player.collect(product, multiplier)
     return print('You found nothing')
 
-player = Explorer('Sean')
-player.checkup()
-search(player)
-print(player.inventory)
-player.checkup()
+# print('''                                                                            
+#      ***** ***                                                               
+#   ******  * **  *                                            *               
+#  **   *  *  ** ***                                          ***              
+# *    *  *   **  *                                            *               
+#     *  *    *                          ****   ***  ****                      
+#    ** **   *  ***   *** **** ****     * ***  * **** **** * ***       ****    
+#    ** **  *    ***   *** **** ***  * *   ****   **   ****   ***     * ***  * 
+#    ** ****      **    **  **** **** **    **    **           **    *   ****  
+#    ** **  ***   **    **   **   **  **    **    **           **   **    **   
+#    ** **    **  **    **   **   **  **    **    **           **   **    **   
+#    *  **    **  **    **   **   **  **    **    **           **   **    **   
+#       *     **  **    **   **   **  **    **    **           **   **    **   
+#   ****      *** **    **   **   **   ******     ***          **   **    **   
+#  *  ****    **  *** * ***  ***  ***   ****       ***         *** * ***** **  
+# *    **     *    ***   ***  ***  ***                          ***   ***   ** 
+# *                                                                            
+#  **                 A text-based adventure game in Python                 
+# ''')
+
+player_name = str(input('What is your name, explorer? '))
+player = Explorer(player_name)
+
+print(f'Welcome, {player.name}, to the land of Rimoria!')
+
+def status_check():
+    global player
+    while player.status == 'alive':
+        play()
+
+def play():
+    raw_action = str(input('What do you want to do: navigate or search? '))
+    action = raw_action.lower()
+    if action == 'navigate':
+        raw_direction = str(input('Which direction: north, east, south, west, or back? '))
+        direction = raw_direction.lower()
+        options = ('north', 'east', 'south', 'west', 'back')
+        if direction not in options:
+            print('I do not understand')
+        else:
+            navigate(direction)
+    elif action == 'search':
+        search(player)
+    else:
+        print('I do not understand')
+
+status_check()
 
 # navigate('north')
 # navigate('back')
@@ -92,8 +112,3 @@ player.checkup()
 # navigate('back')
 # navigate('back')
 # navigate('back')
-
-# player_name = str(input('What is your name, explorer? '))
-# player = Explorer(player_name)
-
-# print(f'Welcome, {player.name}, to the land of Rimoria!')
