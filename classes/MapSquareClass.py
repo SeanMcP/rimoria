@@ -1,21 +1,30 @@
 import random
 
-terrains = ('forest', 'plain', 'mountain', 'cave', 'lake')
-resources = {
-    'forest': 'wood',
-    'plain': 'worms',
-    'mountain': 'rocks',
-    'cave': 'gems',
-    'lake': 'fish'
-}
+# terrains = ('forest', 'plain', 'mountain', 'cave', 'lake')
+# resources = {
+#     'forest': 'wood',
+#     'plain': 'worms',
+#     'mountain': 'rocks',
+#     'cave': 'gems',
+#     'lake': 'fish'
+# }
 
 class MapSquare:
-    def __init__(self, prev_terrain):
+    terrains = ('forest', 'plain', 'mountain', 'cave', 'lake')
+    resources = {
+        'forest': 'wood',
+        'plain': 'worms',
+        'mountain': 'rocks',
+        'cave': 'gems',
+        'lake': 'fish'
+    }
+
+    def __init__(self, prev_terrain='plain'):
         # New terrain has a 50% chance of being the same
         # as preivous terrain
-        self.type = prev_terrain if random.randint(0, 1) is 1 else terrains[random.randint(0, len(terrains) - 1)]
+        self.type = prev_terrain if random.randint(0, 1) is 1 else self.terrains[random.randint(0, len(self.terrains) - 1)]
         self.resource_count = random.randint(0, 5)
-        self.resource_type = resources[self.type]
+        self.resource_type = self.resources[self.type]
     
     def dig(self):
         if self.resource_count:
