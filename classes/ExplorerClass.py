@@ -1,27 +1,47 @@
 import random
 
 class Explorer:
-    def __init__(self, name, hitpoints=100, attackpoints=10, status='alive'):
-        self.ap = attackpoints
-        self.hp = hitpoints
-        self.max_hp = hitpoints
+    def __init__(self, name):
+        self.energy = 100
+        self.equipment = {}
+        self.inventory = {}
         self.name = name
-        self.status = status
+        self.status = 'alive'
+        self.strength = 1
+        self.xp = 0
 
-    def damage(self, amount):
-        print(f'You have been attacked!')
-        if self.status is 'alive':
-            self.hp -= amount
-            if self.hp <= 0:
-                self.status = 'unconscious'
-                print('You\'re now unconscious')
-        elif self.status is 'unconscious':
-            lot = random.randint(0,3)
-            if lot == 1:
-                self.status = 'dead'
-                print('You\'re dead!')
-            elif lot == 2:
-                self.status = 'alive'
-                print('Somehow you recover!')
-            else:
-                print('Why hit someone while they\'re down?')
+    def collect(self, item, quantity):
+        if item not in self.inventory:
+            self.inventory[item] = quantity
+        else:
+            self.inventory[item] += quantity
+        self.gain()
+    
+    def equip(self, item):
+        if item not in self.equipment:
+            self.equipment[item] = 1
+        else:
+            self.equipment += 1
+        self.gain()
+
+    def gain(self, multiplier=1):
+        self.xp += 10 * multiplier
+        if self.xp > 100:
+            self.xp -= 100
+            self.grow()
+    
+    def grow(self, multiplier=1):
+        self.strength += 0.5 * multiplier
+    
+    def rest(self):
+        self.energy += 10 * self.strength
+    
+    def tire(self, multiplier=1):
+        self.energy -= (1 / self.strength) * multiplier
+
+player = Explorer('Sean')
+print('Equipment:', player.equipment)
+print('XP:', player.xp)
+player.equip('hammer')
+print('Equipment:', player.equipment)
+print('XP:', player.xp)
