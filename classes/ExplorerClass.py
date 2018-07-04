@@ -1,6 +1,6 @@
 import random
 
-class Hero:
+class Explorer:
     def __init__(self, name, hitpoints=100, attackpoints=10, status='alive'):
         self.ap = attackpoints
         self.hp = hitpoints

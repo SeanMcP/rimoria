@@ -1,5 +1,5 @@
 import random
-from classes.HeroClass import Hero
+from classes.ExplorerClass import Explorer
 from classes.MapSquareClass import MapSquare
 
 # print('''                                                                            
@@ -68,7 +68,7 @@ navigate('back')
 # navigate('back')
 # navigate('back')
 
-hero_name = str(input('What is your name, hero? '))
-hero = Hero(hero_name)
+player_name = str(input('What is your name, explorer? '))
+player = Explorer(player_name)
 
-print(f'Welcome, {hero.name}, to the land of Rimoria!')
+print(f'Welcome, {player.name}, to the land of Rimoria!')
