@@ -39,9 +39,9 @@ class Explorer:
     def tire(self, multiplier=1):
         self.energy -= (1 / self.strength) * multiplier
 
-player = Explorer('Sean')
-print('Equipment:', player.equipment)
-print('XP:', player.xp)
-player.equip('hammer')
-print('Equipment:', player.equipment)
-print('XP:', player.xp)
+# player = Explorer('Sean')
+# print('Equipment:', player.equipment)
+# print('XP:', player.xp)
+# player.equip('hammer')
+# print('Equipment:', player.equipment)
+# print('XP:', player.xp)
