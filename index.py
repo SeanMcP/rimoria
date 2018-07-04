@@ -8,7 +8,7 @@ location = ['0,0']
 def print_location():
         print(location[0], world_map[location[0]].type)
 
-def navigate(direction):
+def navigate(player, direction):
     global location, world_map
     current_location = location[0].split(',')
     x, y = int(current_location[0]), int(current_location[1])
@@ -19,6 +19,7 @@ def navigate(direction):
     if direction == 'back':
         if len(location) > 1:
             location = location[1:]
+            player.tire()
             return print_location()
         else:
             return print('You cannot go back')
@@ -36,11 +37,12 @@ def navigate(direction):
 
     location.insert(0, new_coordinates)
     location = location[:10]
+    player.tire()
 
     print_location()
     
-def search(player):
-    print('Searching for resources')
+def forage(player):
+    print('Foraging for resources')
     square = world_map[location[0]]
     multiplier = 1
     if square.type is 'cave' or square.type is 'mountain' or square.type is 'lake':
@@ -85,30 +87,28 @@ def status_check():
         play()
 
 def play():
-    raw_action = str(input('What do you want to do: navigate or search? '))
+    raw_action = str(input('''What do you want to do: navigate, forage, or look?
+'''))
     action = raw_action.lower()
     if action == 'navigate':
-        raw_direction = str(input('Which direction: north, east, south, west, or back? '))
-        direction = raw_direction.lower()
-        options = ('north', 'east', 'south', 'west', 'back')
-        if direction not in options:
-            print('I do not understand')
-        else:
-            navigate(direction)
-    elif action == 'search':
-        search(player)
+        action_navigate(player)
+    elif action == 'forage':
+        forage(player)
+    elif action == 'look':
+        action_look()
     else:
         print('I do not understand')
 
-status_check()
+def action_look():
+    print(world_map[location[0]].square_description)
 
-# navigate('north')
-# navigate('back')
-# navigate('east')
-# navigate('east')
-# navigate('east')
-# navigate('east')
-# navigate('back')
-# navigate('back')
-# navigate('back')
-# navigate('back')
+def action_navigate(player):
+    raw_direction = str(input('Which direction: north, east, south, west, or back? '))
+    direction = raw_direction.lower()
+    options = ('north', 'east', 'south', 'west', 'back')
+    if direction not in options:
+        print('I do not understand')
+    else:
+        navigate(player, direction)
+
+status_check()
