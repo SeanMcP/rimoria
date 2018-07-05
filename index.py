@@ -115,12 +115,13 @@ def play():
     elif action == 'look':
         action_look()
     elif action == 'check':
-        action_check()
+        action_check(extra)
     else:
         print(RES['UNKNOWN'])
 
-def action_check():
-    check = str(input('''What do you want to check: location, inventory, or status?
+def action_check(check):
+    if not check:
+        check = str(input('''What do you want to check: location, inventory, or status?
 ''')).lower()
     if check == 'inventory':
         return print(player.inventory)
