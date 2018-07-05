@@ -109,10 +109,13 @@ def play():
         print(RES['UNKNOWN'])
 
 def action_check():
-    check = str(input('''What do you want to check: inventory, or status?
+    check = str(input('''What do you want to check: location, inventory, or status?
 ''')).lower()
     if check == 'inventory':
         return print(player.inventory)
+    elif check == 'location':
+        return print(f'''
+You are standing in a {world_map[location[0]].type} at {location[0]}.''')
     elif check == 'status':
         return player.checkup()
     else:
