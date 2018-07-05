@@ -130,7 +130,8 @@ You are standing in a {world_map[location[0]].type} at {location[0]}.''')
         print(RES['UNKNOWN'])
 
 def action_look():
-    print(world_map[location[0]].square_description)
+    print(f'''
+{world_map[location[0]].square_description}''')
 
 def action_navigate(player):
     direction = str(input('''Which direction: north, east, south, west, or back?
