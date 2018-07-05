@@ -62,6 +62,10 @@ def forage(player):
     product = square.produce()
     if product is not None:
         print(f'You found one {product}.')
+        if square.type == 'cave':
+            player.lose('hammers')
+        if square.type == 'lake':
+            player.lose('worms')
         return player.collect(product, multiplier)
     return print('You found nothing.')
 
@@ -88,8 +92,7 @@ def forage(player):
 player_name = str(input('What is your name, explorer? '))
 player = Explorer(player_name)
 print(f'''
-Welcome, {player.name}, to the land of Rimoria!
-''')
+Welcome, {player.name}, to the land of Rimoria!''')
 
 # player = Explorer()
 

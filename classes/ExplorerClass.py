@@ -3,7 +3,6 @@ import random
 class Explorer:
     def __init__(self, name='Link'):
         self.energy = 100
-        self.equipment = {}
         self.inventory = {}
         self.level = 1
         self.name = name
@@ -19,7 +18,6 @@ Energy:    {self.energy}
 Strength:  {self.strength}
 Level:     {self.level}
 XP:        {self.xp}/100
-Equipment: {self.equipment}
 Inventory: {self.inventory}
 ''')
 
@@ -28,13 +26,6 @@ Inventory: {self.inventory}
             self.inventory[item] = 1
         else:
             self.inventory[item] += 1
-        self.gain(multiplier)
-    
-    def equip(self, item, multiplier=1):
-        if item not in self.equipment:
-            self.equipment[item] = 1
-        else:
-            self.equipment += 1
         self.gain(multiplier)
 
     def gain(self, multiplier=1):
@@ -49,6 +40,12 @@ Inventory: {self.inventory}
 
     def level_up(self, multiplier=1):
         self.level += 1 * multiplier
+    
+    def lose(self, item):
+        if self.inventory[item] > 1:
+            self.inventory[item] -= 1
+        else:
+            del self.inventory[item]
     
     def rest(self):
         self.energy += 10 * self.strength
