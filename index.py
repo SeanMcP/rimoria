@@ -147,6 +147,8 @@ def action_eat():
     food = str(input(f'''
 What would you like to eat: {options_string}?
 >> '''))
+    if food in options:
+        player.lose(food)
     if food == 'worms':
         new_line('It\'s better than nothing.')
         player.heal(1)
