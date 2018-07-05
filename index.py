@@ -50,15 +50,16 @@ def forage(player):
     multiplier = 1
 
     if square.type is 'cave' and 'hammers' not in player.inventory:
-        return print('You need a hammer to forage here')
+        return print('''
+You need a hammer to forage here.''')
     if square.type is 'lake' and 'worms' not in player.inventory:
-        return print('You need a worm to forage here')
+        return print('''
+You need a worm to forage here.''')
     
     product = square.produce()
     if product is not None:
         print(f'''
-You find one {product}.
-''')
+You find one {product}.''')
         if square.type == 'cave':
             player.lose('hammers')
         if square.type == 'lake':
@@ -66,35 +67,37 @@ You find one {product}.
         player.collect(product, multiplier)
     else:
         print('''
-You find nothing.
-''')
+You find nothing.''')
     if square.type is 'cave' or square.type is 'mountain' or square.type is 'lake':
         player.tire(2)
         multiplier = 2
     else:
         player.tire()
 
-# print('''                                                                            
-#      ***** ***                                                               
-#   ******  * **  *                                            *               
-#  **   *  *  ** ***                                          ***              
-# *    *  *   **  *                                            *               
-#     *  *    *                          ****   ***  ****                      
-#    ** **   *  ***   *** **** ****     * ***  * **** **** * ***       ****    
-#    ** **  *    ***   *** **** ***  * *   ****   **   ****   ***     * ***  * 
-#    ** ****      **    **  **** **** **    **    **           **    *   ****  
-#    ** **  ***   **    **   **   **  **    **    **           **   **    **   
-#    ** **    **  **    **   **   **  **    **    **           **   **    **   
-#    *  **    **  **    **   **   **  **    **    **           **   **    **   
-#       *     **  **    **   **   **  **    **    **           **   **    **   
-#   ****      *** **    **   **   **   ******     ***          **   **    **   
-#  *  ****    **  *** * ***  ***  ***   ****       ***         *** * ***** **  
-# *    **     *    ***   ***  ***  ***                          ***   ***   ** 
-# *                                                                            
-#  **                 A text-based adventure game in Python                 
-# ''')
+def print_logo():
+    print('''                                                                            
+    ***** ***                                                               
+******  * **  *                                            *               
+**   *  *  ** ***                                          ***              
+*    *  *   **  *                                            *               
+    *  *    *                          ****   ***  ****                      
+** **   *  ***   *** **** ****     * ***  * **** **** * ***       ****    
+** **  *    ***   *** **** ***  * *   ****   **   ****   ***     * ***  * 
+** ****      **    **  **** **** **    **    **           **    *   ****  
+** **  ***   **    **   **   **  **    **    **           **   **    **   
+** **    **  **    **   **   **  **    **    **           **   **    **   
+*  **    **  **    **   **   **  **    **    **           **   **    **   
+    *     **  **    **   **   **  **    **    **           **   **    **   
+****      *** **    **   **   **   ******     ***          **   **    **   
+*  ****    **  *** * ***  ***  ***   ****       ***         *** * ***** **  
+*    **     *    ***   ***  ***  ***                          ***   ***   ** 
+*                                                                            
+**                 A text-based adventure game in Python                 
+''')
 
-player_name = str(input('What is your name, explorer? '))
+player_name = str(input('''
+What is your name, explorer?
+>> '''))
 player = Explorer(player_name)
 print(f'''
 Welcome, {player.name}, to the land of Rimoria!''')
@@ -110,7 +113,7 @@ def status_check():
 
 def play():
     action_input = str(input('''What do you want to do: navigate, forage, look, or check?
-''')).lower()
+>> ''')).lower()
     action_list = action_input.split(' ')
     action = action_list[0]
     extra = action_list[1] if len(action_list) > 1 else None
@@ -127,8 +130,9 @@ def play():
 
 def action_check(check):
     if not check:
-        check = str(input('''What do you want to check: location, inventory, or status?
-''')).lower()
+        check = str(input('''
+What do you want to check: location, inventory, or status?
+>> ''')).lower()
     if check == 'inventory':
         return print(player.inventory)
     elif check == 'location':
@@ -146,8 +150,9 @@ def action_look():
 def action_navigate(direction):
     options = ('north', 'east', 'south', 'west', 'back')
     if not direction:
-        direction = str(input('''Which direction: north, east, south, west, or back?
-''')).lower()
+        direction = str(input('''
+Which direction: north, east, south, west, or back?
+>> ''')).lower()
     if direction not in options:
         print(RES['UNKNOWN'])
     else:

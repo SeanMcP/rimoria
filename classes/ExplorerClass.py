@@ -2,7 +2,7 @@ import random
 
 class Explorer:
     def __init__(self, name='Link'):
-        self.energy = 100
+        self.energy = 51
         self.inventory = {}
         self.level = 1
         self.name = name
@@ -40,7 +40,8 @@ Inventory: {self.inventory}
 
     def level_up(self, multiplier=1):
         self.level += 1 * multiplier
-        print(f'Level up; you are now level {self.level}!')
+        print(f'''
+** Power up; you are now level {self.level}! **''')
     
     def lose(self, item):
         if self.inventory[item] > 1:
@@ -67,7 +68,7 @@ You die of exhaustion.
             self.status = 'alive'
         if status != self.status:
             print(f'''
-You are feeling {self.status}.''')
+(( You are feeling {self.status} ))''')
     
     def tire(self, multiplier=1):
         if self.status == 'tired':
