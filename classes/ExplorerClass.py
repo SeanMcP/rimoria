@@ -2,7 +2,7 @@ import random
 
 class Explorer:
     def __init__(self, name='Link'):
-        self.energy = 51
+        self.energy = 100
         self.inventory = {}
         self.level = 1
         self.name = name
@@ -37,6 +37,18 @@ Inventory: {self.inventory}
     
     def grow(self, multiplier=1):
         self.strength += 0.5 * multiplier
+    
+    def heal(self, amount):
+        self.energy += amount
+        if self.energy > 100:
+            self.energy = 100
+        if amount > 0:
+            print(f'''
+** Alright! Your energy increased by {amount} **''')
+        else:
+            print(f'''
+** Ouch! Your energy decreased by {amount} **''')
+        self.status_check()
 
     def level_up(self, multiplier=1):
         self.level += 1 * multiplier

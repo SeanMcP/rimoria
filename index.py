@@ -5,11 +5,15 @@ from classes.MapSquareClass import MapSquare
 world_map = { '0,0': MapSquare() }
 location = ['0,0']
 RES = {
-    'UNKNOWN': 'I do not understand'
+    'UNKNOWN': 'I do not understand.'
 }
 
 def print_location():
-        print(location[0], world_map[location[0]].type)
+    print(location[0], world_map[location[0]].type)
+
+def new_line(string):
+    print(f'''
+{string}''')
 
 def navigate(direction):
     global location, world_map
@@ -17,8 +21,7 @@ def navigate(direction):
     x, y = int(current_location[0]), int(current_location[1])
 
     def print_navigate():
-        print(f'''
-You head {direction} and find a {world_map[location[0]].type}.''')
+        new_line(f'You head {direction} and find a {world_map[location[0]].type}.')
 
     if direction == 'back':
         if len(location) > 1:
@@ -26,7 +29,7 @@ You head {direction} and find a {world_map[location[0]].type}.''')
             player.tire()
             return print_navigate()
         else:
-            return print('You cannot go back')
+            return new_line('You cannot go back')
     elif direction == 'north':
         new_coordinates = f'{x},{y + 1}'
     elif direction == 'south':
@@ -50,24 +53,20 @@ def forage(player):
     multiplier = 1
 
     if square.type is 'cave' and 'hammers' not in player.inventory:
-        return print('''
-You need a hammer to forage here.''')
+        return new_line('You need a hammer to forage here.')
     if square.type is 'lake' and 'worms' not in player.inventory:
-        return print('''
-You need a worm to forage here.''')
+        return new_line('You need a worm to forage here.')
     
     product = square.produce()
     if product is not None:
-        print(f'''
-You find one {product}.''')
+        new_line(f'You find one {product}.')
         if square.type == 'cave':
             player.lose('hammers')
         if square.type == 'lake':
             player.lose('worms')
         player.collect(product, multiplier)
     else:
-        print('''
-You find nothing.''')
+        new_line('You find nothing.')
     if square.type is 'cave' or square.type is 'mountain' or square.type is 'lake':
         player.tire(2)
         multiplier = 2
@@ -99,8 +98,7 @@ player_name = str(input('''
 What is your name, explorer?
 >> '''))
 player = Explorer(player_name)
-print(f'''
-Welcome, {player.name}, to the land of Rimoria!''')
+new_line(f'Welcome, {player.name}, to the land of Rimoria!')
 
 # player = Explorer()
 
@@ -112,7 +110,7 @@ def status_check():
     print('Game over')
 
 def play():
-    action_input = str(input('''What do you want to do: navigate, forage, look, or check?
+    action_input = str(input('''What do you want to do: navigate, forage, look, eat, or check?
 >> ''')).lower()
     action_list = action_input.split(' ')
     action = action_list[0]
@@ -125,6 +123,8 @@ def play():
         action_look()
     elif action == 'check':
         action_check(extra)
+    elif action == 'eat':
+        action_eat()
     else:
         print(RES['UNKNOWN'])
 
@@ -136,16 +136,36 @@ What do you want to check: location, inventory, or status?
     if check == 'inventory':
         return print(player.inventory)
     elif check == 'location':
-        return print(f'''
-You are standing in a {world_map[location[0]].type} at {location[0]}.''')
+        return new_line(f'You are standing in a {world_map[location[0]].type} at {location[0]}.')
     elif check == 'status':
         return player.checkup()
     else:
         print(RES['UNKNOWN'])
 
+def action_eat():
+    options = list(player.inventory)
+    if len(options) < 1:
+        return new_line('You have nothing to eat.')
+    options_string = ', '.join(options) + ', or nothing'
+    food = str(input(f'''
+What would you like to eat: {options_string}?
+>> '''))
+    if food == 'worms':
+        new_line('It\'s better than nothing.')
+        player.heal(1)
+    elif food == 'fish':
+        new_line('Mmmm; looks good!')
+        player.heal(25)
+    elif food in options:
+        new_line('You may regret this.')
+        player.heal(-10)
+    elif food == 'nothing':
+        new_line('Best to save your food for later.')
+    else:
+        return print(RES['UNKNOWN'])
+
 def action_look():
-    print(f'''
-{world_map[location[0]].square_description}''')
+    new_line(f'{world_map[location[0]].square_description}')
 
 def action_navigate(direction):
     options = ('north', 'east', 'south', 'west', 'back')
