@@ -16,14 +16,15 @@ def navigate(player, direction):
     current_location = location[0].split(',')
     x, y = int(current_location[0]), int(current_location[1])
 
-    # def print_location():
-    #     print(location[0], world_map[location[0]].type)
+    def print_navigate():
+        print(f'''
+You head {direction} and find a {world_map[location[0]].type}.''')
 
     if direction == 'back':
         if len(location) > 1:
             location = location[1:]
             player.tire()
-            return print_location()
+            return print_navigate()
         else:
             return print('You cannot go back')
     elif direction == 'north':
@@ -42,7 +43,7 @@ def navigate(player, direction):
     location = location[:10]
     player.tire()
 
-    print_location()
+    print_navigate()
     
 def forage(player):
     print('Foraging for resources')
@@ -94,9 +95,8 @@ def status_check():
         play()
 
 def play():
-    raw_action = str(input('''What do you want to do: navigate, forage, look, or check?
-'''))
-    action = raw_action.lower()
+    action = str(input('''What do you want to do: navigate, forage, look, or check?
+''')).lower()
     if action == 'navigate':
         action_navigate(player)
     elif action == 'forage':
@@ -109,7 +109,8 @@ def play():
         print(RES['UNKNOWN'])
 
 def action_check():
-    check = str(input('What do you want to check: inventory, or status? ')).lower()
+    check = str(input('''What do you want to check: inventory, or status?
+''')).lower()
     if check == 'inventory':
         return print(player.inventory)
     elif check == 'status':
@@ -121,8 +122,8 @@ def action_look():
     print(world_map[location[0]].square_description)
 
 def action_navigate(player):
-    raw_direction = str(input('Which direction: north, east, south, west, or back? '))
-    direction = raw_direction.lower()
+    direction = str(input('''Which direction: north, east, south, west, or back?
+''')).lower()
     options = ('north', 'east', 'south', 'west', 'back')
     if direction not in options:
         print(RES['UNKNOWN'])
