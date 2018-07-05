@@ -11,7 +11,7 @@ RES = {
 def print_location():
         print(location[0], world_map[location[0]].type)
 
-def navigate(player, direction):
+def navigate(direction):
     global location, world_map
     current_location = location[0].split(',')
     x, y = int(current_location[0]), int(current_location[1])
@@ -103,10 +103,13 @@ def status_check():
         play()
 
 def play():
-    action = str(input('''What do you want to do: navigate, forage, look, or check?
+    action_input = str(input('''What do you want to do: navigate, forage, look, or check?
 ''')).lower()
+    action_list = action_input.split(' ')
+    action = action_list[0]
+    extra = action_list[1] if len(action_list) > 1 else None
     if action == 'navigate':
-        action_navigate(player)
+        action_navigate(extra)
     elif action == 'forage':
         forage(player)
     elif action == 'look':
@@ -133,13 +136,14 @@ def action_look():
     print(f'''
 {world_map[location[0]].square_description}''')
 
-def action_navigate(player):
-    direction = str(input('''Which direction: north, east, south, west, or back?
-''')).lower()
+def action_navigate(direction):
     options = ('north', 'east', 'south', 'west', 'back')
+    if not direction:
+        direction = str(input('''Which direction: north, east, south, west, or back?
+''')).lower()
     if direction not in options:
         print(RES['UNKNOWN'])
     else:
-        navigate(player, direction)
+        navigate(direction)
 
 status_check()
