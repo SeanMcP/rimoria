@@ -46,9 +46,14 @@ You head {direction} and find a {world_map[location[0]].type}.''')
     print_navigate()
     
 def forage(player):
-    print('Foraging for resources')
     square = world_map[location[0]]
     multiplier = 1
+
+    if square.type is 'cave' and 'hammers' not in player.inventory:
+        return print('You need a hammer to forage here')
+    if square.type is 'lake' and 'worms' not in player.inventory:
+        return print('You need a worm to forage here')
+    
     if square.type is 'cave' or square.type is 'mountain' or square.type is 'lake':
         player.tire(2)
         multiplier = 2
@@ -56,9 +61,9 @@ def forage(player):
         player.tire()
     product = square.produce()
     if product is not None:
-        print(f'You found one {product}')
+        print(f'You found one {product}.')
         return player.collect(product, multiplier)
-    return print('You found nothing')
+    return print('You found nothing.')
 
 # print('''                                                                            
 #      ***** ***                                                               
