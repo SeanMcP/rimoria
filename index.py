@@ -1,6 +1,7 @@
 import random
 from classes.ExplorerClass import Explorer
 from classes.MapSquareClass import MapSquare
+from utils.print import new_line
 
 world_map = { '0,0': MapSquare() }
 location = ['0,0']
@@ -10,10 +11,6 @@ RES = {
 
 def print_location():
     print(location[0], world_map[location[0]].type)
-
-def new_line(string):
-    print(f'''
-{string}''')
 
 def navigate(direction):
     global location, world_map
