@@ -41,9 +41,9 @@ You head {direction} and find a {world_map[location[0]].type}.''')
 
     location.insert(0, new_coordinates)
     location = location[:10]
-    player.tire()
-
     print_navigate()
+
+    player.tire()
     
 def forage(player):
     square = world_map[location[0]]
@@ -54,20 +54,25 @@ def forage(player):
     if square.type is 'lake' and 'worms' not in player.inventory:
         return print('You need a worm to forage here')
     
+    product = square.produce()
+    if product is not None:
+        print(f'''
+You find one {product}.
+''')
+        if square.type == 'cave':
+            player.lose('hammers')
+        if square.type == 'lake':
+            player.lose('worms')
+        player.collect(product, multiplier)
+    else:
+        print('''
+You find nothing.
+''')
     if square.type is 'cave' or square.type is 'mountain' or square.type is 'lake':
         player.tire(2)
         multiplier = 2
     else:
         player.tire()
-    product = square.produce()
-    if product is not None:
-        print(f'You found one {product}.')
-        if square.type == 'cave':
-            player.lose('hammers')
-        if square.type == 'lake':
-            player.lose('worms')
-        return player.collect(product, multiplier)
-    return print('You found nothing.')
 
 # print('''                                                                            
 #      ***** ***                                                               
@@ -98,9 +103,10 @@ Welcome, {player.name}, to the land of Rimoria!''')
 
 def status_check():
     global player
-    while player.status == 'alive':
+    while player.status != 'dead':
         print(' ')
         play()
+    print('Game over')
 
 def play():
     action_input = str(input('''What do you want to do: navigate, forage, look, or check?
