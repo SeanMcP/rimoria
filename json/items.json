@@ -32,7 +32,7 @@
     "stonefish": {
         "description": "A horrid-looking fish that is certainly poisonous.",
         "experience": 1,
-        "source": "fish+rock"
+        "source": "fish+rocks"
     },
     "fishsticks": {
         "description": "Battered and deep-fried fish fillets.",
@@ -47,17 +47,17 @@
     "dust": {
         "description": "The crushed remains of a soft rock.",
         "experience": 1,
-        "source": "rock+rock"
+        "source": "rocks+rocks"
     },
     "hammers": {
         "description": "A simple tool formed from a stone wedged between a forked stick.",
         "experience": 1,
-        "source": "rock+wood"
+        "source": "rocks+wood"
     },
     "flatworm": {
         "description": "A flat invertebrate that feeds and breathes by diffusion.",
         "experience": 1,
-        "source": "rock+worm"
+        "source": "rocks+worm"
     },
     "fire": {
         "description": "A small flame from wood gathered in the forest.",

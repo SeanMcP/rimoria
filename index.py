@@ -151,7 +151,10 @@ def action_assemble():
         if player.inventory[component_1] < 2:
             return new_line(f'You don\'t have enough {component_1}.')
     
-    return assemble([ component_1, component_2 ])
+    components = [ component_1, component_2 ]
+    components.sort()
+
+    return assemble(components)
 
 def lose_components(components):
     for component in components:
@@ -211,10 +214,13 @@ Which direction: north, east, south, west, or back?
 
 def assemble(components):
     key_string = '+'.join(components)
-    with open('./json/products.json') as raw:
-        products = json.load(raw)
-        if key_string in products:
-            product = products[key_string]
+    with open('./json/items.json') as raw:
+        items = json.load(raw)
+        product = None
+        for item in items:
+            if items[item]['source'] == key_string:
+                product = item
+        if product:
             lose_components(components)
             player.collect(product, 1)
             return new_line(f'You have assembled 1 {product}!')
