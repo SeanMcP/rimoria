@@ -1,16 +1,77 @@
 {
-    "fish": 4,
-    "rocks": 4,
-    "wood": 4,
-    "worms": 4,
-    "fish+fish": "minnow",
-    "fish+rocks": "stonefish",
-    "fish+wood": "fishsticks",
-    "fish+worm": "eel",
-    "rocks+rocks": "dust",
-    "rocks+wood": "hammers",
-    "rocks+worms": "flatworm",
-    "wood+wood": "fire",
-    "wood+worms": "wormwood",
-    "worms+worms": "cocoon"
+    "fish": {
+        "description": "Dark fresh-water trout with light spots.",
+        "experience": 1,
+        "source": "lake"
+    },
+    "rocks": {
+        "description": "Metamorphic rocks of various sizes.",
+        "experience": 1,
+        "source": "mountain"
+    },
+    "wood": {
+        "description": "Bits of branches and bark gathered from the forest floor.",
+        "experience": 1,
+        "source": "forest"
+    },
+    "worms": {
+        "description": "Wriggling earthworms gathered from the soil.",
+        "experience": 1,
+        "source": "plain"
+    },
+    "gems": {
+        "description": "Sparkling minerals of various hues.",
+        "experience": 1,
+        "source": "cave"
+    },
+    "caviar": {
+        "description": "Dark circular eggs with a distinctly fishy and salty smell.",
+        "experience": 1,
+        "source": "fish+fish"
+    },
+    "stonefish": {
+        "description": "A horrid-looking fish that is certainly poisonous.",
+        "experience": 1,
+        "source": "fish+rock"
+    },
+    "fishsticks": {
+        "description": "Battered and deep-fried fish fillets.",
+        "experience": 1,
+        "source": "fish+wood"
+    },
+    "eel": {
+        "description": "A snakelike fish that pulses electricity.",
+        "experience": 1,
+        "source": "fish+worm"
+    },
+    "dust": {
+        "description": "The crushed remains of a soft rock.",
+        "experience": 1,
+        "source": "rock+rock"
+    },
+    "hammers": {
+        "description": "A simple tool formed from a stone wedged between a forked stick.",
+        "experience": 1,
+        "source": "rock+wood"
+    },
+    "flatworm": {
+        "description": "A flat invertebrate that feeds and breathes by diffusion.",
+        "experience": 1,
+        "source": "rock+worm"
+    },
+    "fire": {
+        "description": "A small flame from wood gathered in the forest.",
+        "experience": 1,
+        "source": "wood+wood"
+    },
+    "wormwood": {
+        "description": "A bitter yet aromatic shrub with possibly medicinal properties.",
+        "experience": 1,
+        "source": "wood+worm"
+    },
+    "cocoon": {
+        "description": "A lemon-shaped worm incubator that is the size of your pinky thumb-nail.",
+        "experience": 1,
+        "source": "worm+worm"
+    }
 }

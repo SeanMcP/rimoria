@@ -211,7 +211,7 @@ Which direction: north, east, south, west, or back?
 
 def assemble(components):
     key_string = '+'.join(components)
-    with open('./json/items.json') as raw:
+    with open('./json/products.json') as raw:
         products = json.load(raw)
         if key_string in products:
             product = products[key_string]
