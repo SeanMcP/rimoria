@@ -6,6 +6,9 @@ from utils.print import new_line
 world_map = { '0,0': MapSquare() }
 location = ['0,0']
 RES = {
+    'FAIL': {
+        'ASSEMBLE': 'You cannot assemble those items.'
+    },
     'UNKNOWN': 'I do not understand.'
 }
 
@@ -107,7 +110,7 @@ def status_check():
     print('Game over')
 
 def play():
-    action_input = str(input('''What do you want to do: navigate, forage, look, eat, or check?
+    action_input = str(input('''What do you want to do: look, navigate, forage, check, eat, or assemble?
 >> ''')).lower()
     action_list = action_input.split(' ')
     action = action_list[0]
@@ -122,8 +125,49 @@ def play():
         action_check(extra)
     elif action == 'eat':
         action_eat()
+    elif action == 'assemble':
+        action_assemble()
     else:
-        print(RES['UNKNOWN'])
+        new_line(RES['UNKNOWN'])
+
+def action_assemble():
+    if len(player.inventory) < 1:
+        return new_line('You don\'t have anything to assemble.')
+    new_line(f'''Inventory: {player.inventory}
+''')
+    options = list(player.inventory)
+    component_1 = str(input('Component 1: >> ')).lower()
+    if component_1 not in options:
+        return new_line(RES['UNKNOWN'])
+    component_2 = str(input('Component 2: >> ')).lower()
+    if component_2 not in options:
+        return new_line(RES['UNKNOWN'])
+    components = [ component_1, component_2 ]
+    if component_1 == component_2:
+        if player.inventory[component_1] < 2:
+            return new_line(f'You don\'t have enough {component_1}.')
+    if 'wood' in components and 'rocks' in components:
+        lose_components(components)
+        player.collect('hammers', 2)
+        new_line('You have assembled 1 hammer!')
+    elif 'wood' in components and component_1 == component_2:
+        lose_components(components)
+        player.collect('fire', 2)
+        new_line('You have assembled 1 fire!')
+    elif 'wood' in components and 'worms' in components:
+        lose_components(components)
+        player.collect('wormwood', 1)
+        new_line('You have assembled 1 wormwood!')
+    elif 'wood' in components and 'fish' in components:
+        lose_components(components)
+        player.collect('fishsticks', 1)
+        new_line('You have assembled 1 fishstick!')
+    else:
+        return new_line(RES['FAIL']['ASSEMBLE'])
+
+def lose_components(components):
+    for component in components:
+        player.lose(component)
 
 def action_check(check):
     if not check:
@@ -131,7 +175,7 @@ def action_check(check):
 What do you want to check: location, inventory, or status?
 >> ''')).lower()
     if check == 'inventory':
-        return print(player.inventory)
+        return new_line(f'Inventory: {player.inventory}' if len(player.inventory) > 0 else 'You have nothing in your inventory.')
     elif check == 'location':
         return new_line(f'You are standing in a {world_map[location[0]].type} at {location[0]}.')
     elif check == 'status':

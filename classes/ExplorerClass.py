@@ -3,6 +3,13 @@ import random
 class Explorer:
     def __init__(self, name='Link'):
         self.energy = 100
+        # self.inventory = {
+        #     'wood': 10,
+        #     'fish': 10,
+        #     'worms': 10,
+        #     'rocks': 10,
+        #     'gems': 10
+        # }
         self.inventory = {}
         self.level = 1
         self.name = name
