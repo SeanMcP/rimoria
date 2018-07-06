@@ -1,4 +1,5 @@
 import random
+import json
 from classes.ExplorerClass import Explorer
 from classes.MapSquareClass import MapSquare
 from utils.print import new_line
@@ -133,37 +134,24 @@ def play():
 def action_assemble():
     if len(player.inventory) < 1:
         return new_line('You don\'t have anything to assemble.')
+
     new_line(f'''Inventory: {player.inventory}
 ''')
     options = list(player.inventory)
+
     component_1 = str(input('Component 1: >> ')).lower()
     if component_1 not in options:
         return new_line(RES['UNKNOWN'])
+
     component_2 = str(input('Component 2: >> ')).lower()
     if component_2 not in options:
         return new_line(RES['UNKNOWN'])
-    components = [ component_1, component_2 ]
+
     if component_1 == component_2:
         if player.inventory[component_1] < 2:
             return new_line(f'You don\'t have enough {component_1}.')
-    if 'wood' in components and 'rocks' in components:
-        lose_components(components)
-        player.collect('hammers', 2)
-        new_line('You have assembled 1 hammer!')
-    elif 'wood' in components and component_1 == component_2:
-        lose_components(components)
-        player.collect('fire', 2)
-        new_line('You have assembled 1 fire!')
-    elif 'wood' in components and 'worms' in components:
-        lose_components(components)
-        player.collect('wormwood', 1)
-        new_line('You have assembled 1 wormwood!')
-    elif 'wood' in components and 'fish' in components:
-        lose_components(components)
-        player.collect('fishsticks', 1)
-        new_line('You have assembled 1 fishstick!')
-    else:
-        return new_line(RES['FAIL']['ASSEMBLE'])
+    
+    return assemble([ component_1, component_2 ])
 
 def lose_components(components):
     for component in components:
@@ -220,5 +208,17 @@ Which direction: north, east, south, west, or back?
         print(RES['UNKNOWN'])
     else:
         navigate(direction)
+
+def assemble(components):
+    key_string = '+'.join(components)
+    with open('./json/items.json') as raw:
+        products = json.load(raw)
+        if key_string in products:
+            product = products[key_string]
+            lose_components(components)
+            player.collect(product, 1)
+            return new_line(f'You have assembled 1 {product}!')
+        else:
+            return new_line(RES['FAIL']['ASSEMBLE'])
 
 status_check()
