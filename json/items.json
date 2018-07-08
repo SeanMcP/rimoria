@@ -42,7 +42,7 @@
     "eel": {
         "description": "A snakelike fish that pulses electricity.",
         "experience": 1,
-        "source": "fish+worm"
+        "source": "fish+worms"
     },
     "dust": {
         "description": "The crushed remains of a soft rock.",
@@ -57,7 +57,7 @@
     "flatworm": {
         "description": "A flat invertebrate that feeds and breathes by diffusion.",
         "experience": 1,
-        "source": "rocks+worm"
+        "source": "rocks+worms"
     },
     "fire": {
         "description": "A small flame from wood gathered in the forest.",
@@ -67,11 +67,16 @@
     "wormwood": {
         "description": "A bitter yet aromatic shrub with possibly medicinal properties.",
         "experience": 1,
-        "source": "wood+worm"
+        "source": "wood+worms"
     },
     "cocoon": {
         "description": "A lemon-shaped worm incubator that is the size of your pinky thumb-nail.",
         "experience": 1,
-        "source": "worm+worm"
+        "source": "worms+worms"
+    },
+    "treasurechest": {
+        "description": "A jewel-encrusted box perfect for holding small trinkets.",
+        "experience": 1,
+        "source": "gems+wood"
     }
 }

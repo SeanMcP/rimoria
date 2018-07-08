@@ -111,7 +111,7 @@ def status_check():
     print('Game over')
 
 def play():
-    action_input = str(input('''What do you want to do: look, navigate, forage, check, eat, or assemble?
+    action_input = str(input('''What do you want to do: look, navigate, forage, check, eat, inspect, or assemble?
 >> ''')).lower()
     action_list = action_input.split(' ')
     action = action_list[0]
@@ -126,6 +126,8 @@ def play():
         action_check(extra)
     elif action == 'eat':
         action_eat()
+    elif action == 'inspect':
+        action_inspect()
     elif action == 'assemble':
         action_assemble()
     else:
@@ -197,6 +199,21 @@ What would you like to eat: {options_string}?
         new_line('Best to save your food for later.')
     else:
         return print(RES['UNKNOWN'])
+
+def action_inspect():
+    options = list(player.inventory)
+    if len(options) < 1:
+        return new_line('You have nothing to inspect.')
+    options_string = ', '.join(options) + ', or nothing'
+    selection = str(input(f'''
+What would you like to inspect: {options_string}?
+>> '''))
+    if selection in options:
+        with open('./json/items.json') as raw:
+            items = json.load(raw)
+            return new_line(items[selection]['description'])
+    else:
+        return new_line(RES['UNKNOWN'])
 
 def action_look():
     new_line(f'{world_map[location[0]].square_description}')
