@@ -9,7 +9,10 @@ def get_items():
     return get_data('items')
 
 def get_item(name):
-    return get_items()[name]
+    items = get_items()
+    if name in items:
+        return items[name]
+    return None
 
 def res(path):
     path_list = path.split('.')
