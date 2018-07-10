@@ -2,6 +2,8 @@
     "fail": {
         "assemble":
             "You cannot assemble those items.",
+        "eat":
+            "You cannot eat that item.",
         "unknown":
             "I do not understand."
     }

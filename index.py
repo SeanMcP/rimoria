@@ -77,7 +77,7 @@ def status_check():
     while player.status != 'dead':
         print(' ')
         play()
-    print('Game over')
+    new_line('Game over')
 
 def play():
     action_input = new_line_input('What do you want to do: look, navigate, forage, check, eat, inspect, or assemble?').lower()
@@ -144,25 +144,33 @@ def action_check(check):
 
 def action_eat():
     options = list(player.inventory)
+
     if len(options) < 1:
         return new_line('You have nothing to eat.')
-    options_string = ', '.join(options) + ', or nothing'
+
+    options_string = f'{", ".join(options)}, or nothing'
     food = new_line_input(f'What would you like to eat: {options_string}?')
-    if food in options:
-        player.lose(food)
-    if food == 'worms':
-        new_line('It\'s better than nothing.')
-        player.heal(1)
-    elif food == 'fish':
+
+    if food == 'nothing':
+        return new_line('Best to save your food for later.')
+
+    item = get_item(food)
+    if not item:
+        return new_line(res('fail.unknown'))
+    
+    energy = item['energy']
+    if not energy:
+        return new_line(res('fail.eat'))
+    if energy >= 20:
         new_line('Mmmm; looks good!')
-        player.heal(25)
-    elif food in options:
+    elif energy > 0:
+        new_line('Something is better than nothing.')
+    elif energy < 0:
         new_line('You may regret this.')
-        player.heal(-10)
-    elif food == 'nothing':
-        new_line('Best to save your food for later.')
     else:
         return print(res('fail.unknown'))
+    player.lose(food)
+    player.heal(energy)
 
 def action_inspect():
     options = list(player.inventory)
