@@ -1,7 +1,7 @@
 import random
-import json
 from classes.ExplorerClass import Explorer
 from classes.MapSquareClass import MapSquare
+from utils.data import get_item, get_items
 from utils.print import new_line, new_line_input
 
 world_map = { '0,0': MapSquare() }
@@ -200,14 +200,12 @@ def action_inspect():
     options_string = ', '.join(options) + ', or nothing'
     selection = new_line_input(f'What would you like to inspect: {options_string}?')
     if selection in options:
-        with open('./json/items.json') as raw:
-            items = json.load(raw)
-            return new_line(items[selection]['description'])
+        return new_line(get_item(selection)['description'])
     else:
         return new_line(RES['UNKNOWN'])
 
 def action_look():
-    new_line(f'{world_map[location[0]].square_description}')
+    new_line(world_map[location[0]].square_description)
 
 def action_navigate(direction):
     options = ('north', 'east', 'south', 'west', 'back')
@@ -220,17 +218,16 @@ def action_navigate(direction):
 
 def assemble(components):
     key_string = '+'.join(components)
-    with open('./json/items.json') as raw:
-        items = json.load(raw)
-        product = None
-        for item in items:
-            if items[item]['source'] == key_string:
-                product = item
-        if product:
-            lose_components(components)
-            player.collect(product, 1)
-            return new_line(f'You have assembled 1 {product}!')
-        else:
-            return new_line(RES['FAIL']['ASSEMBLE'])
+    items = get_items()
+    product = None
+    for item in items:
+        if items[item]['source'] == key_string:
+            product = item
+    if product:
+        lose_components(components)
+        player.collect(product, 1)
+        return new_line(f'You have assembled 1 {product}!')
+    else:
+        return new_line(RES['FAIL']['ASSEMBLE'])
 
 status_check()

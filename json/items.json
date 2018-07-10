@@ -34,7 +34,7 @@
         "experience": 1,
         "source": "fish+rocks"
     },
-    "fishsticks": {
+    "fish sticks": {
         "description": "Battered and deep-fried fish fillets.",
         "experience": 1,
         "source": "fish+wood"
@@ -74,7 +74,7 @@
         "experience": 1,
         "source": "worms+worms"
     },
-    "treasurechest": {
+    "treasure chest": {
         "description": "A jewel-encrusted box perfect for holding small trinkets.",
         "experience": 1,
         "source": "gems+wood"
