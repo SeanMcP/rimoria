@@ -21,4 +21,5 @@ A text-based adventure game in Python
     ```
 
 ## Resources
+- [pyguide.md](https://github.com/google/styleguide/blob/gh-pages/pyguide.md) - Google's python style guide
 - [Inflect](https://pypi.org/project/inflect/) - Pluralize nouns

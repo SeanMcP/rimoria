@@ -16,22 +16,22 @@ def navigate(direction):
     x, y = int(current_location[0]), int(current_location[1])
 
     def print_navigate():
-        new_line(f'You head {direction} and find a {world_map[location[0]].type}.')
+        new_line(f'You head {direction if len(direction) > 1 else direction.upper()} and find a {world_map[location[0]].type}.')
 
-    if direction == 'back':
+    if direction in ['back', 'b']:
         if len(location) > 1:
             location = location[1:]
             player.tire()
             return print_navigate()
         else:
             return new_line('You cannot go back')
-    elif direction == 'north':
+    elif direction in ['north', 'n']:
         new_coordinates = f'{x},{y + 1}'
-    elif direction == 'south':
+    elif direction in ['south', 's']:
         new_coordinates = f'{x},{y - 1}'
-    elif direction == 'east':
+    elif direction in ['east', 'e']:
         new_coordinates = f'{x + 1},{y}'
-    elif direction == 'west':
+    elif direction in ['west', 'w']:
         new_coordinates = f'{x - 1},{y}'
 
     if new_coordinates not in world_map:
@@ -84,7 +84,7 @@ def play():
     action_list = action_input.split(' ')
     action = action_list[0]
     extra = action_list[1] if len(action_list) > 1 else None
-    if action == 'navigate':
+    if action in ['navigate', 'go']:
         action_navigate(extra)
     elif action == 'forage':
         forage(player)
@@ -121,7 +121,7 @@ def action_assemble():
         if player.inventory[component_1] < 2:
             return new_line(f'You don\'t have enough {component_1}.')
     
-    components = [ component_1, component_2 ]
+    components = [component_1, component_2]
     components.sort()
 
     return assemble(components)
@@ -174,10 +174,13 @@ def action_eat():
 
 def action_inspect():
     options = list(player.inventory)
+
     if len(options) < 1:
         return new_line('You have nothing to inspect.')
+
     options_string = ', '.join(options) + ', or nothing'
     selection = new_line_input(f'What would you like to inspect: {options_string}?')
+
     if selection in options:
         return new_line(get_item(selection)['description'])
     else:
@@ -187,7 +190,7 @@ def action_look():
     new_line(world_map[location[0]].square_description)
 
 def action_navigate(direction):
-    options = ('north', 'east', 'south', 'west', 'back')
+    options = ('north', 'n', 'east', 'e', 'south', 's', 'west', 'w', 'back', 'b')
     if not direction:
         direction = new_line_input('Which direction: north, east, south, west, or back?').lower()
     if direction not in options:
