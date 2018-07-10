@@ -2,7 +2,7 @@ import random
 import json
 from classes.ExplorerClass import Explorer
 from classes.MapSquareClass import MapSquare
-from utils.print import new_line
+from utils.print import new_line, new_line_input
 
 world_map = { '0,0': MapSquare() }
 location = ['0,0']
@@ -95,9 +95,7 @@ def print_logo():
 **                 A text-based adventure game in Python                 
 ''')
 
-player_name = str(input('''
-What is your name, explorer?
->> '''))
+player_name = new_line_input('What is your name, explorer?')
 player = Explorer(player_name)
 new_line(f'Welcome, {player.name}, to the land of Rimoria!')
 
@@ -111,8 +109,7 @@ def status_check():
     print('Game over')
 
 def play():
-    action_input = str(input('''What do you want to do: look, navigate, forage, check, eat, inspect, or assemble?
->> ''')).lower()
+    action_input = new_line_input('What do you want to do: look, navigate, forage, check, eat, inspect, or assemble?').lower()
     action_list = action_input.split(' ')
     action = action_list[0]
     extra = action_list[1] if len(action_list) > 1 else None
@@ -164,9 +161,7 @@ def lose_components(components):
 
 def action_check(check):
     if not check:
-        check = str(input('''
-What do you want to check: location, inventory, or status?
->> ''')).lower()
+        check = new_line_input('What do you want to check: location, inventory, or status?').lower()
     if check == 'inventory':
         return new_line(f'Inventory: {player.inventory}' if len(player.inventory) > 0 else 'You have nothing in your inventory.')
     elif check == 'location':
@@ -181,9 +176,7 @@ def action_eat():
     if len(options) < 1:
         return new_line('You have nothing to eat.')
     options_string = ', '.join(options) + ', or nothing'
-    food = str(input(f'''
-What would you like to eat: {options_string}?
->> '''))
+    food = new_line_input(f'What would you like to eat: {options_string}?')
     if food in options:
         player.lose(food)
     if food == 'worms':
@@ -205,9 +198,7 @@ def action_inspect():
     if len(options) < 1:
         return new_line('You have nothing to inspect.')
     options_string = ', '.join(options) + ', or nothing'
-    selection = str(input(f'''
-What would you like to inspect: {options_string}?
->> '''))
+    selection = new_line_input(f'What would you like to inspect: {options_string}?')
     if selection in options:
         with open('./json/items.json') as raw:
             items = json.load(raw)
@@ -221,9 +212,7 @@ def action_look():
 def action_navigate(direction):
     options = ('north', 'east', 'south', 'west', 'back')
     if not direction:
-        direction = str(input('''
-Which direction: north, east, south, west, or back?
->> ''')).lower()
+        direction = new_line_input('Which direction: north, east, south, west, or back?').lower()
     if direction not in options:
         print(RES['UNKNOWN'])
     else:
