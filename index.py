@@ -1,17 +1,11 @@
 import random
 from classes.ExplorerClass import Explorer
 from classes.MapSquareClass import MapSquare
-from utils.data import get_item, get_items
+from utils.data import get_item, get_items, res
 from utils.print import new_line, new_line_input
 
 world_map = { '0,0': MapSquare() }
 location = ['0,0']
-RES = {
-    'FAIL': {
-        'ASSEMBLE': 'You cannot assemble those items.'
-    },
-    'UNKNOWN': 'I do not understand.'
-}
 
 def print_location():
     print(location[0], world_map[location[0]].type)
@@ -74,32 +68,9 @@ def forage(player):
     else:
         player.tire()
 
-def print_logo():
-    print('''                                                                            
-    ***** ***                                                               
-******  * **  *                                            *               
-**   *  *  ** ***                                          ***              
-*    *  *   **  *                                            *               
-    *  *    *                          ****   ***  ****                      
-** **   *  ***   *** **** ****     * ***  * **** **** * ***       ****    
-** **  *    ***   *** **** ***  * *   ****   **   ****   ***     * ***  * 
-** ****      **    **  **** **** **    **    **           **    *   ****  
-** **  ***   **    **   **   **  **    **    **           **   **    **   
-** **    **  **    **   **   **  **    **    **           **   **    **   
-*  **    **  **    **   **   **  **    **    **           **   **    **   
-    *     **  **    **   **   **  **    **    **           **   **    **   
-****      *** **    **   **   **   ******     ***          **   **    **   
-*  ****    **  *** * ***  ***  ***   ****       ***         *** * ***** **  
-*    **     *    ***   ***  ***  ***                          ***   ***   ** 
-*                                                                            
-**                 A text-based adventure game in Python                 
-''')
-
 player_name = new_line_input('What is your name, explorer?')
 player = Explorer(player_name)
 new_line(f'Welcome, {player.name}, to the land of Rimoria!')
-
-# player = Explorer()
 
 def status_check():
     global player
@@ -128,7 +99,7 @@ def play():
     elif action == 'assemble':
         action_assemble()
     else:
-        new_line(RES['UNKNOWN'])
+        new_line(res('fail.unknown'))
 
 def action_assemble():
     if len(player.inventory) < 1:
@@ -140,11 +111,11 @@ def action_assemble():
 
     component_1 = str(input('Component 1: >> ')).lower()
     if component_1 not in options:
-        return new_line(RES['UNKNOWN'])
+        return new_line(res('fail.unknown'))
 
     component_2 = str(input('Component 2: >> ')).lower()
     if component_2 not in options:
-        return new_line(RES['UNKNOWN'])
+        return new_line(res('fail.unknown'))
 
     if component_1 == component_2:
         if player.inventory[component_1] < 2:
@@ -169,7 +140,7 @@ def action_check(check):
     elif check == 'status':
         return player.checkup()
     else:
-        print(RES['UNKNOWN'])
+        print(res('fail.unknown'))
 
 def action_eat():
     options = list(player.inventory)
@@ -191,7 +162,7 @@ def action_eat():
     elif food == 'nothing':
         new_line('Best to save your food for later.')
     else:
-        return print(RES['UNKNOWN'])
+        return print(res('fail.unknown'))
 
 def action_inspect():
     options = list(player.inventory)
@@ -202,7 +173,7 @@ def action_inspect():
     if selection in options:
         return new_line(get_item(selection)['description'])
     else:
-        return new_line(RES['UNKNOWN'])
+        return new_line(res('fail.unknown'))
 
 def action_look():
     new_line(world_map[location[0]].square_description)
@@ -212,7 +183,7 @@ def action_navigate(direction):
     if not direction:
         direction = new_line_input('Which direction: north, east, south, west, or back?').lower()
     if direction not in options:
-        print(RES['UNKNOWN'])
+        print(res('fail.unknown'))
     else:
         navigate(direction)
 
@@ -228,6 +199,6 @@ def assemble(components):
         player.collect(product, 1)
         return new_line(f'You have assembled 1 {product}!')
     else:
-        return new_line(RES['FAIL']['ASSEMBLE'])
+        return new_line(res('fail.assemble'))
 
 status_check()

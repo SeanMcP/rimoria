@@ -1,0 +1,8 @@
+{
+    "fail": {
+        "assemble":
+            "You cannot assemble those items.",
+        "unknown":
+            "I do not understand."
+    }
+}
