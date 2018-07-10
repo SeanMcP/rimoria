@@ -78,5 +78,10 @@
         "description": "A jewel-encrusted box perfect for holding small trinkets.",
         "experience": 1,
         "source": "gems+wood"
+    },
+    "amulet": {
+        "description": "A golden necklace with possibly magical powers.",
+        "experience": 1,
+        "source": "gems+rocks"
     }
 }
