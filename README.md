@@ -1,6 +1,6 @@
 # Rimoria
 
-A text-based adventure game in Python
+⌨️ A text-based adventure game in Python
 
 ## How to play
 

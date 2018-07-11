@@ -8,9 +8,9 @@ class Explorer:
         # self.inventory = {
         #     'wood': 10,
         #     'fish': 10,
-        #     'worms': 10,
-        #     'rocks': 10,
-        #     'gems': 10
+        #     'worm': 10,
+        #     'rock': 10,
+        #     'gem': 10
         # }
         self.inventory = {}
         self.level = 1

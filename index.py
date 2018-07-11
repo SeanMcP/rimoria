@@ -48,7 +48,7 @@ def action_forage(player):
 
     requirement = square.requirement
     if requirement and requirement not in player.inventory:
-        return new_line(f'You need a {requirement} to forage here.')
+        return new_line(f'You need one {requirement} to forage here.')
     
     product = square.produce()
     if product is not None:
@@ -201,7 +201,7 @@ def assemble(components):
     if product:
         lose_components(components)
         player.collect(product, 1)
-        return new_line(f'You have assembled 1 {product}!')
+        return new_line(f'You have assembled one {product}!')
     else:
         return new_line(res('fail.assemble'))
 

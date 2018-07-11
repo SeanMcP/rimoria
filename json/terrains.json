@@ -2,8 +2,8 @@
     "cave": {
         "description": "A dimly lit and cool cave with large stalactites and stalagmites.",
         "difficulty": 2,
-        "resource": "gems",
-        "requirement": "hammers"
+        "resource": "gem",
+        "requirement": "hammer"
     },
     "forest": {
         "description": "A densely forested area with a mixture of hard and soft wood, and evergreen trees.",
@@ -15,18 +15,18 @@
         "description": "Pebble beaches and cattails dot the shores of a clear and cold lake.",
         "difficulty": 2,
         "resource": "fish",
-        "requirement": "worms"
+        "requirement": "worm"
     },
     "mountain": {
         "description": "A jagged mountain pass with large cracks, sharp corners, and steep ledges.",
         "difficulty": 2,
-        "resource": "rocks",
+        "resource": "rock",
         "requirement": false
     },
     "plain": {
         "description": "Rolling hills of calf-length grass extend as far as the eye can see.",
         "difficulty": 1,
-        "resource": "worms",
+        "resource": "worm",
         "requirement": false
     }
 }

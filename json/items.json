@@ -5,7 +5,7 @@
         "experience": 1,
         "source": "lake"
     },
-    "rocks": {
+    "rock": {
         "description": "Metamorphic rocks of various sizes.",
         "energy": -10,
         "experience": 1,
@@ -17,13 +17,13 @@
         "experience": 1,
         "source": "forest"
     },
-    "worms": {
+    "worm": {
         "description": "Wriggling earthworms gathered from the soil.",
         "energy": 1,
         "experience": 1,
         "source": "plain"
     },
-    "gems": {
+    "gem": {
         "description": "Sparkling minerals of various hues.",
         "energy": -10,
         "experience": 1,
@@ -39,9 +39,9 @@
         "description": "A horrid-looking fish that is certainly poisonous.",
         "energy": -100,
         "experience": 1,
-        "source": "fish+rocks"
+        "source": "fish+rock"
     },
-    "fish sticks": {
+    "fish stick": {
         "description": "Battered and deep-fried fish fillets.",
         "energy": 30,
         "experience": 1,
@@ -51,25 +51,25 @@
         "description": "A snakelike fish that pulses electricity.",
         "energy": -10,
         "experience": 1,
-        "source": "fish+worms"
+        "source": "fish+worm"
     },
     "dust": {
         "description": "The crushed remains of a soft rock.",
         "energy": -5,
         "experience": 1,
-        "source": "rocks+rocks"
+        "source": "rock+rock"
     },
-    "hammers": {
+    "hammer": {
         "description": "A simple tool formed from a stone wedged between a forked stick.",
         "energy": -10,
         "experience": 1,
-        "source": "rocks+wood"
+        "source": "rock+wood"
     },
     "flatworm": {
         "description": "A flat invertebrate that feeds and breathes by diffusion.",
         "energy": 1,
         "experience": 1,
-        "source": "rocks+worms"
+        "source": "rock+worm"
     },
     "fire": {
         "description": "A small flame from wood gathered in the forest.",
@@ -81,24 +81,24 @@
         "description": "A bitter yet aromatic shrub with possibly medicinal properties.",
         "energy": 10,
         "experience": 1,
-        "source": "wood+worms"
+        "source": "wood+worm"
     },
     "cocoon": {
         "description": "A lemon-shaped worm incubator that is the size of your pinky thumb-nail.",
         "energy": 1,
         "experience": 1,
-        "source": "worms+worms"
+        "source": "worm+worm"
     },
     "treasure chest": {
         "description": "A jewel-encrusted box perfect for holding small trinkets.",
         "energy": false,
         "experience": 1,
-        "source": "gems+wood"
+        "source": "gem+wood"
     },
     "amulet": {
         "description": "A golden necklace with possibly magical powers.",
         "energy": -10,
         "experience": 1,
-        "source": "gems+rocks"
+        "source": "gem+rock"
     }
 }
