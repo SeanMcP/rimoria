@@ -68,7 +68,6 @@ new_line(f'Welcome, {player.name}, to the land of Rimoria!')
 def status_check():
     global player
     while player.status != 'dead':
-        print(' ')
         play()
     new_line('Game over')
 
@@ -113,11 +112,8 @@ def action_assemble():
     if component_1 == component_2:
         if player.inventory[component_1] < 2:
             return new_line(f'You don\'t have enough {component_1}.')
-    
-    components = [component_1, component_2]
-    components.sort()
 
-    return assemble(components)
+    return assemble([component_1, component_2])
 
 def lose_components(components):
     for component in components:
@@ -192,6 +188,7 @@ def action_navigate(direction):
         navigate(direction)
 
 def assemble(components):
+    components.sort()
     key_string = '+'.join(components)
     items = get_items()
     product = None
@@ -200,9 +197,10 @@ def assemble(components):
             product = item
     if product:
         lose_components(components)
-        player.collect(product, 1)
-        return new_line(f'You have assembled one {product}!')
+        player.collect(product, items[product]['experience'])
+        new_line(f'You have assembled one {product}!')
     else:
-        return new_line(res('fail.assemble'))
+        new_line(res('fail.assemble'))
+    player.tire()
 
 status_check()

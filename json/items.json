@@ -2,7 +2,7 @@
     "fish": {
         "description": "Dark fresh-water trout with light spots.",
         "energy": 20,
-        "experience": 1,
+        "experience": 2,
         "source": "lake"
     },
     "rock": {
@@ -26,31 +26,31 @@
     "gem": {
         "description": "Sparkling minerals of various hues.",
         "energy": -10,
-        "experience": 1,
+        "experience": 2,
         "source": "cave"
     },
     "caviar": {
         "description": "Dark circular eggs with a distinctly fishy and salty smell.",
         "energy": 40,
-        "experience": 1,
+        "experience": 2,
         "source": "fish+fish"
     },
     "stonefish": {
         "description": "A horrid-looking fish that is certainly poisonous.",
         "energy": -100,
-        "experience": 1,
+        "experience": 2,
         "source": "fish+rock"
     },
     "fish stick": {
         "description": "Battered and deep-fried fish fillets.",
         "energy": 30,
-        "experience": 1,
+        "experience": 2,
         "source": "fish+wood"
     },
     "eel": {
         "description": "A snakelike fish that pulses electricity.",
         "energy": -10,
-        "experience": 1,
+        "experience": 2,
         "source": "fish+worm"
     },
     "dust": {
@@ -62,7 +62,7 @@
     "hammer": {
         "description": "A simple tool formed from a stone wedged between a forked stick.",
         "energy": -10,
-        "experience": 1,
+        "experience": 2,
         "source": "rock+wood"
     },
     "flatworm": {
@@ -74,7 +74,7 @@
     "fire": {
         "description": "A small flame from wood gathered in the forest.",
         "energy": false,
-        "experience": 1,
+        "experience": 2,
         "source": "wood+wood"
     },
     "wormwood": {
@@ -92,13 +92,13 @@
     "treasure chest": {
         "description": "A jewel-encrusted box perfect for holding small trinkets.",
         "energy": false,
-        "experience": 1,
+        "experience": 2,
         "source": "gem+wood"
     },
     "amulet": {
         "description": "A golden necklace with possibly magical powers.",
         "energy": -10,
-        "experience": 1,
+        "experience": 2,
         "source": "gem+rock"
     }
 }
