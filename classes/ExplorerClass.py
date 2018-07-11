@@ -50,14 +50,14 @@ XP:       {self.xp}/100''')
         if self.energy > 100:
             self.energy = 100
         if amount > 0:
-            new_line(f'** Alright! your energy increased by {amount} **')
+            new_line(f'** Alright! Your energy increased by {amount} **')
         else:
-            new_line(f'** Ouch! your energy decreased by {amount} **')
+            new_line(f'** Ouch! Your energy decreased by {amount} **')
         self.status_check()
 
     def level_up(self, multiplier=1):
         self.level += 1 * multiplier
-        new_line(f'** Power up! you are now level {self.level} **')
+        new_line(f'** Power up! You are now level {self.level} **')
     
     def lose(self, item):
         if self.inventory[item] > 1:
