@@ -43,30 +43,23 @@ def navigate(direction):
 
     player.tire()
     
-def forage(player):
+def action_forage(player):
     square = world_map[location[0]]
-    multiplier = 1
 
-    if square.type is 'cave' and 'hammers' not in player.inventory:
-        return new_line('You need a hammer to forage here.')
-    if square.type is 'lake' and 'worms' not in player.inventory:
-        return new_line('You need a worm to forage here.')
+    requirement = square.requirement
+    if requirement and requirement not in player.inventory:
+        return new_line(f'You need a {requirement} to forage here.')
     
     product = square.produce()
     if product is not None:
         new_line(f'You find one {product}.')
-        if square.type == 'cave':
-            player.lose('hammers')
-        if square.type == 'lake':
-            player.lose('worms')
-        player.collect(product, multiplier)
+        if requirement:
+            player.lose(requirement)
+        player.collect(product, square.difficulty)
     else:
         new_line('You find nothing.')
-    if square.type is 'cave' or square.type is 'mountain' or square.type is 'lake':
-        player.tire(2)
-        multiplier = 2
-    else:
-        player.tire()
+
+    player.tire(square.difficulty)
 
 player_name = new_line_input('What is your name, explorer?')
 player = Explorer(player_name)
@@ -87,7 +80,7 @@ def play():
     if action in ['navigate', 'go']:
         action_navigate(extra)
     elif action == 'forage':
-        forage(player)
+        action_forage(player)
     elif action == 'look':
         action_look()
     elif action == 'check':
@@ -187,7 +180,7 @@ def action_inspect():
         return new_line(res('fail.unknown'))
 
 def action_look():
-    new_line(world_map[location[0]].square_description)
+    new_line(world_map[location[0]].description)
 
 def action_navigate(direction):
     options = ('north', 'n', 'east', 'e', 'south', 's', 'west', 'w', 'back', 'b')
