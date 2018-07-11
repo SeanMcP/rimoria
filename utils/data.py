@@ -14,6 +14,15 @@ def get_item(name):
         return items[name]
     return None
 
+def get_terrains():
+    return get_data('terrains')
+
+def get_terrain(name):
+    terrains = get_terrains()
+    if name in terrains:
+        return terrains[name]
+    return None
+
 def res(path):
     path_list = path.split('.')
     res_type, res_name = path_list[0], path_list[1]
