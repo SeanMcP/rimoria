@@ -2,13 +2,10 @@ import random
 from classes.ExplorerClass import Explorer
 from classes.MapSquareClass import MapSquare
 from utils.data import get_item, get_items, res
-from utils.print import new_line, new_line_input
+from utils.print import new_line, new_line_input, print_map
 
 world_map = { '0,0': MapSquare() }
 location = ['0,0']
-
-def print_location():
-    print(location[0], world_map[location[0]].type)
 
 def navigate(direction):
     global location, world_map
@@ -121,13 +118,15 @@ def lose_components(components):
 
 def action_check(check):
     if not check:
-        check = new_line_input('What do you want to check: location, inventory, or status?').lower()
+        check = new_line_input('What do you want to check: location, map, inventory, or status?').lower()
     if check == 'inventory':
         return new_line(f'Inventory: {player.inventory}' if len(player.inventory) > 0 else 'You have nothing in your inventory.')
     elif check == 'location':
         return new_line(f'You are standing in a {world_map[location[0]].type} at {location[0]}.')
     elif check == 'status':
         return player.checkup()
+    elif check == 'map':
+        return print_map(location[0], world_map)
     else:
         print(res('fail.unknown'))
 
