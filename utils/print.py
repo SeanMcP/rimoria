@@ -46,7 +46,7 @@ def print_map(current_location, world_map):
             if coordinates in world_map:
                 if coordinates == current_location:
                     # X marks the spot
-                    output += 'X'
+                    output += '★'
                 else:
                     # Returns first letter of terrain type
                     output += world_map[coordinates].type[0].upper()
@@ -55,16 +55,16 @@ def print_map(current_location, world_map):
                 output += ' '
             if coordinates == '0,0':
                 # Trailing asterisk if origin
-                output += '*'
+                output += '°'
             else:
                 # Trailing blank for spacing
                 output += ' '
         output += f'┆\n{row}'
     
     output += '''  ↑
-  N    Key: * - Origin
-            X - Current location
-            P - Terrain type
+  N    Key: ° - Origin (0,0)
+            ★ - Current location
+            A - Terrain type
               - Undiscovered terrain'''
 
     return print(output)
