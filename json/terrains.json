@@ -28,5 +28,11 @@
         "difficulty": 1,
         "resource": "worm",
         "requirement": false
+    },
+    "desert": {
+        "description": "An arid land with low brush peaking out of sandy dunes",
+        "difficulty": 3,
+        "resource": "ore",
+        "requirement": "rock"
     }
 }
