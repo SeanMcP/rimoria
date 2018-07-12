@@ -1,0 +1,42 @@
+{
+    "buffalo": {
+        "source": "plain",
+        "energy": 10,
+        "speed": 1,
+        "strength": 5,
+        "experience": 10,
+        "resource": ""
+    },
+    "cougar": {
+        "source": "mountain",
+        "energy": 10,
+        "speed": 1,
+        "strength": 5,
+        "experience": 10,
+        "resource": ""
+    },
+    "beaver": {
+        "source": "lake",
+        "energy": 10,
+        "speed": 1,
+        "strength": 5,
+        "experience": 10,
+        "resource": ""
+    },
+    "scorpion": {
+        "source": "desert",
+        "energy": 10,
+        "speed": 1,
+        "strength": 5,
+        "experience": 10,
+        "resource": ""
+    },
+    "deer": {
+        "source": "forest",
+        "energy": 10,
+        "speed": 1,
+        "strength": 5,
+        "experience": 10,
+        "resource": ""
+    }
+}

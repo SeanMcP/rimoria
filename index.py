@@ -1,4 +1,5 @@
 import random
+from classes.AnimalClass import Animal
 from classes.ExplorerClass import Explorer
 from classes.TerrainClass import Terrain
 from utils.data import get_item, get_items, res

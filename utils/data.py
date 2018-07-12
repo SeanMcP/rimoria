@@ -14,6 +14,15 @@ def get_item(name):
         return items[name]
     return None
 
+def get_animals():
+    return get_data('animals')
+
+def get_animal(name):
+    animals = get_animals()
+    if name in animals:
+        return animals[name]
+    return None
+
 def get_terrains():
     return get_data('terrains')
 
