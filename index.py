@@ -1,10 +1,10 @@
 import random
 from classes.ExplorerClass import Explorer
-from classes.MapSquareClass import MapSquare
+from classes.TerrainClass import Terrain
 from utils.data import get_item, get_items, res
 from utils.print import new_line, new_line_input, print_map
 
-world_map = { '0,0': MapSquare() }
+world_map = { '0,0': Terrain() }
 location = ['0,0']
 
 def navigate(direction):
@@ -32,7 +32,7 @@ def navigate(direction):
         new_coordinates = f'{x - 1},{y}'
 
     if new_coordinates not in world_map:
-        world_map[new_coordinates] = MapSquare(world_map[location[0]].type)
+        world_map[new_coordinates] = Terrain(world_map[location[0]].type)
 
     location.insert(0, new_coordinates)
     location = location[:10]

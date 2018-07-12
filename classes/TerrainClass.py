@@ -1,7 +1,7 @@
 import random
 from utils.data import get_terrains
 
-class MapSquare:
+class Terrain:
     terrains = get_terrains()
 
     def __init__(self, prev_terrain='plain'):
