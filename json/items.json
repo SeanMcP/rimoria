@@ -110,7 +110,13 @@
     "copper": {
         "description": "A refined piece of malleable and conductive metal.",
         "energy": -10,
-        "experience": 2,
+        "experience": 4,
         "source": "fire+ore"
+    },
+    "transistor": {
+        "description": "A semiconductor used to amplify or switch electronic signals.",
+        "energy": -10,
+        "experience": 4,
+        "source": "copper+eel"
     }
 }
