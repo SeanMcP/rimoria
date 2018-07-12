@@ -87,9 +87,7 @@ XP:       {self.xp}/100''')
             new_line(f'(( You are feeling {self.status} ))')
     
     def tire(self, multiplier=1):
-        if self.status == 'tired':
+        if self.status != 'alive':
             multiplier += 1
-        elif self.status == 'exhausted':
-            multiplier += 2
-        self.energy -= (1 / self.strength) * multiplier
+        self.energy -= (1.5 / self.strength) * multiplier
         self.status_check()

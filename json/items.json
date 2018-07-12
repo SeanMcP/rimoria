@@ -19,7 +19,7 @@
     },
     "worm": {
         "description": "Wriggling earthworms gathered from the soil.",
-        "energy": 1,
+        "energy": 5,
         "experience": 1,
         "source": "plain"
     },
@@ -37,7 +37,7 @@
     },
     "caviar": {
         "description": "Dark circular eggs with a distinctly fishy and salty smell.",
-        "energy": 40,
+        "energy": 50,
         "experience": 2,
         "source": "fish+fish"
     },
