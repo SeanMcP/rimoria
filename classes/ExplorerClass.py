@@ -8,6 +8,8 @@ class Explorer:
         # self.inventory = {
         #     'wood': 10,
         #     'fish': 10,
+        #     'fire': 10,
+        #     'ore': 10,
         #     'worm': 10,
         #     'rock': 10,
         #     'gem': 10
