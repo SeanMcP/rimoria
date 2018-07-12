@@ -23,6 +23,12 @@
         "experience": 1,
         "source": "plain"
     },
+    "ore": {
+        "description": "A glob of orange brown metal with flecks of green.",
+        "energy": -10,
+        "experience": 2,
+        "source": "desert"
+    },
     "gem": {
         "description": "Sparkling minerals of various hues.",
         "energy": -10,
@@ -53,8 +59,8 @@
         "experience": 2,
         "source": "fish+worm"
     },
-    "dust": {
-        "description": "The crushed remains of a soft rock.",
+    "stone block": {
+        "description": "A shaped rock that would be good for toolmaking.",
         "energy": -5,
         "experience": 1,
         "source": "rock+rock"
@@ -63,7 +69,7 @@
         "description": "A simple tool formed from a stone wedged between a forked stick.",
         "energy": -10,
         "experience": 2,
-        "source": "rock+wood"
+        "source": "stone block+wood"
     },
     "flatworm": {
         "description": "A flat invertebrate that feeds and breathes by diffusion.",
@@ -99,6 +105,12 @@
         "description": "A golden necklace with possibly magical powers.",
         "energy": -10,
         "experience": 2,
-        "source": "gem+rock"
+        "source": "copper+gem"
+    },
+    "copper": {
+        "description": "A refined piece of malleable and conductive metal.",
+        "energy": -10,
+        "experience": 2,
+        "source": "fire+ore"
     }
 }
