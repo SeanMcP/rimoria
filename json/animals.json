@@ -5,7 +5,7 @@
         "speed": 1,
         "strength": 5,
         "experience": 10,
-        "resource": ""
+        "resource": "steak"
     },
     "cougar": {
         "source": "mountain",
@@ -13,15 +13,15 @@
         "speed": 1,
         "strength": 5,
         "experience": 10,
-        "resource": ""
+        "resource": "pelt"
     },
-    "beaver": {
+    "alligator": {
         "source": "lake",
         "energy": 10,
         "speed": 1,
         "strength": 5,
         "experience": 10,
-        "resource": ""
+        "resource": "scales"
     },
     "scorpion": {
         "source": "desert",
@@ -29,7 +29,7 @@
         "speed": 1,
         "strength": 5,
         "experience": 10,
-        "resource": ""
+        "resource": "venom"
     },
     "deer": {
         "source": "forest",
@@ -37,6 +37,14 @@
         "speed": 1,
         "strength": 5,
         "experience": 10,
-        "resource": ""
+        "resource": "venison"
+    },
+    "bear": {
+        "source": "cave",
+        "energy": 10,
+        "speed": 1,
+        "strength": 5,
+        "experience": 10,
+        "resource": "meat"
     }
 }
