@@ -23,6 +23,13 @@ def get_animal(name):
         return animals[name]
     return None
 
+def find_animal_type(source):
+    animals = get_animals()
+    for animal in animals:
+        if animals[animal]['source'] == source:
+            return animal
+    return None
+
 def get_terrains():
     return get_data('terrains')
 
