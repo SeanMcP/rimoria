@@ -5,11 +5,13 @@ from classes.TerrainClass import Terrain
 from utils.data import get_item, get_items, res
 from utils.print import new_line, new_line_input, print_map
 
-world_map = { '0,0': Terrain() }
+enemies = { '0,0': None }
 location = ['0,0']
+mode = 'play'
+world_map = { '0,0': Terrain() }
 
 def navigate(direction):
-    global location, world_map
+    global enemies, location, mode, world_map
     current_location = location[0].split(',')
     x, y = int(current_location[0]), int(current_location[1])
 
@@ -37,9 +39,21 @@ def navigate(direction):
 
     location.insert(0, new_coordinates)
     location = location[:10]
-    print_navigate()
 
-    player.tire(world_map[location[0]].difficulty)
+    current_terrain = world_map[location[0]]
+
+    roll = 1
+    # roll = random.randint(1, 10)
+    if roll == 1 and new_coordinates not in enemies:
+        print(current_terrain.type)
+        new_enemy = Animal(current_terrain.type)
+        enemies[new_coordinates] = new_enemy
+        mode = 'fight'
+        new_line(f'You encounter a wild {new_enemy.type}!')
+    else:
+        print_navigate()
+
+    player.tire(current_terrain.difficulty)
     
 def action_forage(player):
     square = world_map[location[0]]
@@ -66,8 +80,35 @@ new_line(f'Welcome, {player.name}, to the land of Rimoria!')
 def status_check():
     global player
     while player.status != 'dead':
-        play()
+        options = {
+            'fight': fight,
+            'play': play
+        }
+        options[mode]()
     new_line('Game over')
+
+def fight():
+    action_input = new_line_input('What do you want to do: run?').lower()
+    action_list = action_input.split(' ')
+    action = action_list[0]
+    extra = action_list[1] if len(action_list) > 1 else None
+    if action == 'run':
+        action_run()
+    else:
+        new_line(res('fail.unknown'))
+
+def action_run():
+    global mode
+    enemy = enemies[location[0]]
+    player_roll = random.randint(1, 20)
+    enemy_roll = random.randint(1, 20)
+    if player_roll + player.strength > enemy_roll + enemy.speed:
+        new_line('You managed to run away.')
+        directions = ['n', 's', 'e', 'w']
+        mode = 'play'
+        action_navigate(directions[random.randint(0, len(directions) - 1)])
+    else:
+        new_line('You were unabled to run away!')
 
 def play():
     action_input = new_line_input('What do you want to do: look, navigate, forage, check, eat, inspect, or assemble?').lower()
