@@ -39,7 +39,7 @@ def navigate(direction):
     location = location[:10]
     print_navigate()
 
-    player.tire()
+    player.tire(world_map[location[0]].difficulty)
     
 def action_forage(player):
     square = world_map[location[0]]

@@ -89,5 +89,5 @@ XP:       {self.xp}/100''')
     def tire(self, multiplier=1):
         if self.status != 'alive':
             multiplier += 1
-        self.energy -= (1.5 / self.strength) * multiplier
+        self.energy -= (2 / self.strength) * multiplier
         self.status_check()
