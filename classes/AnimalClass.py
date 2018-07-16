@@ -9,10 +9,10 @@ class Animal:
         self.data = get_animal(self.type)
         self.energy = self.data['energy']
         self.experience = self.data['experience']
+        self.is_alive = True
         self.is_angry = False
         self.resource = self.data['resource']
         self.speed = self.data['speed']
-        self.status = 'alive'
         self.strength = self.data['strength']
     
     def anger(self):
@@ -21,11 +21,10 @@ class Animal:
             new_line(f'The {self.type} is getting angry!')
 
     def attack(self):
-        roll = random.randint(0, 20) + self.speed
+        roll = random.randint(1, 20) + self.speed
         if roll < 10:
-            new_line(f'The {self.type}\'s attack misses!')
             return None
-        new_line(f'{self.type} attack hits!')
+        new_line(f'The {self.type} attacks!')
         return self.strength
 
     def calm(self):
@@ -36,8 +35,9 @@ class Animal:
     def damage(self, amount):
         self.energy -= amount
         new_line(f'** The {self.type} takes {amount} damage **')
-        self.anger()
-        self.status_check()
+        alive = self.status_check()
+        if alive:
+            self.anger()
 
     def feed(self, amount):
         if amount > 5:
@@ -54,5 +54,8 @@ class Animal:
 
     def status_check(self):
         if self.energy < 1:
-            self.status = 'dead'
-            return new_line(f'The {self.type} dies.')
+            self.is_alive = False
+            new_line(f'The {self.type} dies.')
+            return None
+        else:
+            return True

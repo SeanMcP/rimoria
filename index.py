@@ -36,24 +36,20 @@ def navigate(direction):
 
     if new_coordinates not in world_map:
         world_map[new_coordinates] = Terrain(world_map[location[0]].type)
+        roll = random.randint(1, 10)
+        if roll == 1:
+            enemies[new_coordinates] = Animal(world_map[new_coordinates].type)
 
     location.insert(0, new_coordinates)
     location = location[:10]
 
-    current_terrain = world_map[location[0]]
-
-    roll = 1
-    # roll = random.randint(1, 10)
-    if roll == 1 and new_coordinates not in enemies:
-        print(current_terrain.type)
-        new_enemy = Animal(current_terrain.type)
-        enemies[new_coordinates] = new_enemy
+    if new_coordinates in enemies and enemies[new_coordinates]:
         mode = 'fight'
-        new_line(f'You encounter a wild {new_enemy.type}!')
+        new_line(f'You encounter a wild {enemies[new_coordinates].type}!')
     else:
         print_navigate()
 
-    player.tire(current_terrain.difficulty)
+    player.tire(world_map[new_coordinates].difficulty)
     
 def action_forage(player):
     square = world_map[location[0]]
@@ -64,7 +60,6 @@ def action_forage(player):
     
     product = square.produce()
     if product is not None:
-        new_line(f'You find one {product}.')
         if requirement:
             player.lose(requirement)
         player.collect(product, square.difficulty)
@@ -88,27 +83,58 @@ def status_check():
     new_line('Game over')
 
 def fight():
-    action_input = new_line_input('What do you want to do: run?').lower()
+    action_input = new_line_input('What do you want to do: run, or attack?').lower()
     action_list = action_input.split(' ')
     action = action_list[0]
-    extra = action_list[1] if len(action_list) > 1 else None
+    # extra = action_list[1] if len(action_list) > 1 else None
     if action == 'run':
         action_run()
+    elif action == 'attack':
+        action_attack()
     else:
         new_line(res('fail.unknown'))
+
+def action_attack():
+    global enemies, mode
+    enemy = enemies[location[0]]
+    player_roll = random.randint(1, 20)
+    enemy_roll = random.randint(1, 20)
+    if player_roll + player.strength > enemy_roll + enemy.speed:
+        enemy.damage(player.strength)
+        if not enemy.is_alive:
+            mode = 'play'
+            enemies[location[0]] = None
+            return player.collect(enemy.resource, enemy.speed)
+    else:
+        return new_line('You miss!')
+    animal_decide()
+
+def animal_decide():
+    global mode
+    enemy = enemies[location[0]]
+    roll = random.randint(1, 2)
+    if enemy.is_angry or roll == 2:
+        damage = enemy.attack()
+        if damage:
+            player.heal(-damage)
+    else:
+        run = enemy.run()
+        if run:
+            new_line(f'The {enemy.type} ran away.')
+            mode = 'play'
 
 def action_run():
     global mode
     enemy = enemies[location[0]]
     player_roll = random.randint(1, 20)
     enemy_roll = random.randint(1, 20)
-    if player_roll + player.strength > enemy_roll + enemy.speed:
-        new_line('You managed to run away.')
+    if not enemy.is_angry or player_roll + player.strength > enemy_roll + enemy.speed:
+        new_line('You manage to run away.')
         directions = ['n', 's', 'e', 'w']
         mode = 'play'
         action_navigate(directions[random.randint(0, len(directions) - 1)])
     else:
-        new_line('You were unabled to run away!')
+        new_line('You were unable to run away!')
 
 def play():
     action_input = new_line_input('What do you want to do: look, navigate, forage, check, eat, inspect, or assemble?').lower()
