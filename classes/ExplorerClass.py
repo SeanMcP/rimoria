@@ -36,6 +36,7 @@ XP:       {self.xp}/100''')
         else:
             self.inventory[item] += 1
         self.gain(multiplier)
+        return new_line(f'You find one {item}.')
 
     def gain(self, multiplier=1):
         self.xp += 10 * multiplier
