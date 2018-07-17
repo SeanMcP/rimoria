@@ -112,7 +112,7 @@ def action_attack():
             enemies[location[0]] = None
             return player.collect(enemy.resource, enemy.speed)
     else:
-        return new_line('You miss!')
+        new_line('You miss!')
     animal_decide()
 
 def animal_decide():
