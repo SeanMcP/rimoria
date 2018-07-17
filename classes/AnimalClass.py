@@ -1,5 +1,5 @@
 import random
-from utils.data import get_animal, find_animal_type
+from utils.data import get_animal, get_item, find_animal_type
 from utils.print import new_line
 
 class Animal:
@@ -39,12 +39,23 @@ class Animal:
         if alive:
             self.anger()
 
-    def feed(self, amount):
+    def feed(self, item_name):
+        item = get_item(item_name)
+        amount = item['energy']
+        self.energy += amount
         if amount > 5:
-            self.energy += amount
-            self.calm()
+            if self.is_angry:
+                self.calm()
+            else:
+                new_line(f'The {self.type} takes the offering and happily goes on its way.')
+                return True
         else:
-            self.anger()
+            is_alive = self.status_check()
+            if is_alive:
+                self.anger()
+            else:
+                return True
+        return False
     
     def run(self):
         roll = random.randint(0, 20) + self.speed
