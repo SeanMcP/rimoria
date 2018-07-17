@@ -118,5 +118,41 @@
         "energy": -10,
         "experience": 4,
         "source": "copper+eel"
+    },
+    "steak": {
+        "description": "Tough and nutrient rich meat from a buffalo.",
+        "energy": 60,
+        "experience": 4,
+        "source": "buffalo"
+    },
+    "pelt": {
+        "description": "A beautiful, solf, and warm animal fur.",
+        "energy": -10,
+        "experience": 4,
+        "source": "cougar"
+    },
+    "tooth": {
+        "description": "A long alligator tooth that is possible good for making a weapon.",
+        "energy": -10,
+        "experience": 4,
+        "source": "alligator"
+    },
+    "venom": {
+        "description": "A toxic liquid extracted from a scorpion.",
+        "energy": -100,
+        "experience": 4,
+        "source": "scorpion"
+    },
+    "venison": {
+        "description": "A gamey meat from a deer.",
+        "energy": 60,
+        "experience": 4,
+        "source": "deer"
+    },
+    "meat": {
+        "description": "A smokey and greasy meat from a bear.",
+        "energy": 60,
+        "experience": 4,
+        "source": "bear"
     }
 }

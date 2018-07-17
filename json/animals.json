@@ -21,7 +21,7 @@
         "description": "A scaled reptile with a large mouth and sharp teeth.",
         "energy": 10,
         "experience": 10,
-        "resource": "scales",
+        "resource": "tooth",
         "source": "lake",
         "speed": 1,
         "strength": 5
