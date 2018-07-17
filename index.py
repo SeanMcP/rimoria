@@ -36,8 +36,8 @@ def navigate(direction):
 
     if new_coordinates not in world_map:
         world_map[new_coordinates] = Terrain(world_map[location[0]].type)
-        roll = 1
-        # roll = random.randint(1, 10)
+        # roll = 1
+        roll = random.randint(1, 10)
         if roll == 1:
             enemies[new_coordinates] = Animal(world_map[new_coordinates].type)
 
@@ -84,12 +84,15 @@ def status_check():
     new_line('Game over')
 
 def fight():
-    action_input = new_line_input('What do you want to do: run, feed, or attack?').lower()
+    action_input = new_line_input('What do you want to do: look, run, feed, or attack?').lower()
     action_list = action_input.split(' ')
     action = action_list[0]
     # extra = action_list[1] if len(action_list) > 1 else None
     if action == 'run':
         action_run()
+    elif action == 'look':
+        animal = enemies[location[0]]
+        new_line(f'{animal.description} It looks {"angry!" if animal.is_angry else "calm."}')
     elif action == 'feed':
         action_feed()
     elif action == 'attack':
@@ -161,8 +164,6 @@ def action_feed():
             enemies[location[0]] = None
     else:
         return new_line(res('fail.unknown'))
-    
-    
 
 def play():
     action_input = new_line_input('What do you want to do: look, navigate, forage, check, eat, inspect, or assemble?').lower()

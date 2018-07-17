@@ -7,6 +7,7 @@ class Animal:
     def __init__(self, resource_type='plain'):
         self.type = find_animal_type(resource_type)
         self.data = get_animal(self.type)
+        self.description = self.data['description']
         self.energy = self.data['energy']
         self.experience = self.data['experience']
         self.is_alive = True

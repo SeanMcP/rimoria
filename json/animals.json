@@ -1,50 +1,56 @@
 {
     "buffalo": {
-        "source": "plain",
+        "description": "A great bison with a broad head and sharp horns.",
         "energy": 10,
-        "speed": 1,
-        "strength": 5,
         "experience": 10,
-        "resource": "steak"
+        "resource": "steak",
+        "source": "plain",
+        "speed": 1,
+        "strength": 5
     },
     "cougar": {
-        "source": "mountain",
+        "description": "A tan mountain lion with piercing eyes.",
         "energy": 10,
-        "speed": 1,
-        "strength": 5,
         "experience": 10,
-        "resource": "pelt"
+        "resource": "pelt",
+        "source": "mountain",
+        "speed": 1,
+        "strength": 5
     },
     "alligator": {
-        "source": "lake",
+        "description": "A scaled reptile with a large mouth and sharp teeth.",
         "energy": 10,
-        "speed": 1,
-        "strength": 5,
         "experience": 10,
-        "resource": "scales"
+        "resource": "scales",
+        "source": "lake",
+        "speed": 1,
+        "strength": 5
     },
     "scorpion": {
-        "source": "desert",
+        "description": "A small arachnid with two pincers and a venomous stringer.",
         "energy": 10,
-        "speed": 1,
-        "strength": 5,
         "experience": 10,
-        "resource": "venom"
+        "resource": "venom",
+        "source": "desert",
+        "speed": 1,
+        "strength": 5
     },
     "deer": {
-        "source": "forest",
+        "description": "A hoofed herbavore with thin yet powerful legs.",
         "energy": 10,
-        "speed": 1,
-        "strength": 5,
         "experience": 10,
-        "resource": "venison"
+        "resource": "venison",
+        "source": "forest",
+        "speed": 1,
+        "strength": 5
     },
     "bear": {
-        "source": "cave",
+        "description": "A black beast with large paws and sharp claws.",
         "energy": 10,
-        "speed": 1,
-        "strength": 5,
         "experience": 10,
-        "resource": "meat"
+        "resource": "meat",
+        "source": "cave",
+        "speed": 1,
+        "strength": 5
     }
 }
