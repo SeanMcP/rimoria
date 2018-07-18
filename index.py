@@ -272,6 +272,8 @@ def action_inspect():
 
     if selection in options:
         return new_line(get_item(selection)['description'])
+    elif selection == 'nothing':
+        return new_line('Best to keep moving.')
     else:
         return new_line(res('fail.unknown'))
 
