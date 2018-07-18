@@ -36,8 +36,8 @@ def navigate(direction):
 
     if new_coordinates not in world_map:
         world_map[new_coordinates] = Terrain(world_map[location[0]].type)
-        roll = 1
-        # roll = random.randint(1, 10)
+        # roll = 1
+        roll = random.randint(1, 10)
         if roll == 1:
             enemies[new_coordinates] = Animal(world_map[new_coordinates].type)
 
@@ -227,7 +227,7 @@ def action_check(check):
     elif check == 'status':
         return player.checkup()
     elif check == 'map':
-        return print_map(location[0], world_map)
+        return print_map(location[0], world_map, enemies)
     else:
         print(res('fail.unknown'))
 
