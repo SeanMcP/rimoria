@@ -36,8 +36,8 @@ def navigate(direction):
 
     if new_coordinates not in world_map:
         world_map[new_coordinates] = Terrain(world_map[location[0]].type)
-        # roll = 1
-        roll = random.randint(1, 10)
+        roll = 1
+        # roll = random.randint(1, 10)
         if roll == 1:
             enemies[new_coordinates] = Animal(world_map[new_coordinates].type)
 
@@ -118,8 +118,8 @@ def action_attack():
 def animal_decide():
     global mode
     enemy = enemies[location[0]]
-    roll = random.randint(1, 2)
-    if enemy.is_angry or roll == 2:
+    roll = random.randint(1, 5)
+    if roll > 1:
         damage = enemy.attack()
         if damage:
             player.heal(-damage)
@@ -127,6 +127,7 @@ def animal_decide():
         run = enemy.run()
         if run:
             new_line(f'The {enemy.type} ran away.')
+            enemies[location[0]] = None
             mode = 'play'
 
 def action_run():
@@ -134,13 +135,16 @@ def action_run():
     enemy = enemies[location[0]]
     player_roll = random.randint(1, 20)
     enemy_roll = random.randint(1, 20)
-    if not enemy.is_angry or player_roll + player.strength > enemy_roll + enemy.speed:
+    if enemy.is_angry:
+        enemy_roll += 5
+    if player_roll + player.strength > enemy_roll + enemy.speed:
         new_line('You manage to run away.')
         directions = ['n', 's', 'e', 'w']
         mode = 'play'
         action_navigate(directions[random.randint(0, len(directions) - 1)])
     else:
-        new_line('You were unable to run away!')
+        new_line('You try to run but are unable to escape!')
+        player.tire()
 
 def action_feed():
     global mode
