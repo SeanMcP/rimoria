@@ -2,6 +2,8 @@
 
 ⌨️ A text-based adventure game in Python
 
+[Project Board](https://github.com/SeanMcP/rimoria/projects/1)
+
 ## How to play
 
 1. Clone the repository
