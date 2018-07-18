@@ -1,39 +1,39 @@
 {
     "buffalo": {
         "description": "A great bison with a broad head and sharp horns.",
-        "energy": 10,
+        "energy": 70,
         "experience": 10,
         "resource": "steak",
         "source": "plain",
-        "speed": 1,
-        "strength": 5
+        "speed": 2,
+        "strength": 20
     },
     "cougar": {
         "description": "A tan mountain lion with piercing eyes.",
-        "energy": 10,
+        "energy": 20,
         "experience": 10,
         "resource": "pelt",
         "source": "mountain",
-        "speed": 1,
-        "strength": 5
+        "speed": 4,
+        "strength": 10
     },
     "alligator": {
         "description": "A scaled reptile with a large mouth and sharp teeth.",
-        "energy": 10,
+        "energy": 30,
         "experience": 10,
         "resource": "tooth",
         "source": "lake",
-        "speed": 1,
-        "strength": 5
+        "speed": 2,
+        "strength": 30
     },
     "scorpion": {
         "description": "A small arachnid with two pincers and a venomous stringer.",
-        "energy": 10,
+        "energy": 5,
         "experience": 10,
         "resource": "venom",
         "source": "desert",
         "speed": 1,
-        "strength": 5
+        "strength": 50
     },
     "deer": {
         "description": "A hoofed herbavore with thin yet powerful legs.",
@@ -41,16 +41,16 @@
         "experience": 10,
         "resource": "venison",
         "source": "forest",
-        "speed": 1,
+        "speed": 5,
         "strength": 5
     },
     "bear": {
         "description": "A black beast with large paws and sharp claws.",
-        "energy": 10,
+        "energy": 50,
         "experience": 10,
         "resource": "meat",
         "source": "cave",
-        "speed": 1,
-        "strength": 5
+        "speed": 3,
+        "strength": 25
     }
 }
