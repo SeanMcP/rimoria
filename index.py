@@ -300,7 +300,6 @@ def assemble(components):
     if product:
         lose_components(components)
         player.collect(product, items[product]['experience'])
-        new_line(f'You have assembled one {product}!')
     else:
         new_line(res('fail.assemble'))
     player.tire()
