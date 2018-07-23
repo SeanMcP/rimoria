@@ -133,18 +133,17 @@ def animal_decide():
 def action_run():
     global mode
     animal = animals[location[0]]
-    player_roll = random.randint(1, 20)
-    animal_roll = random.randint(1, 20)
-    if animal.is_angry:
-        animal_roll += 5
-    if player_roll + player.strength > animal_roll + animal.speed:
-        new_line('You manage to run away.')
-        directions = ['n', 's', 'e', 'w']
-        mode = 'explore'
-        action_navigate(directions[random.randint(0, len(directions) - 1)])
-    else:
+    player_roll = random.randint(1, 20) + player.strength
+    animal_roll = random.randint(1, 20) + animal.speed
+    if animal.is_angry and player_roll < animal_roll:
         new_line('You try to run but are unable to escape!')
         player.tire()
+        animal_decide()
+    else:
+        new_line('You manage to run away.')
+        directions = ['n', 'e', 's', 'w']
+        mode = 'explore'
+        action_navigate(directions[random.randint(0, len(directions) - 1)])
 
 def action_feed():
     global mode
