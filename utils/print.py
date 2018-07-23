@@ -28,7 +28,7 @@ def print_logo():
 **                 A text-based adventure game in Python                 
 ''')
 
-def print_map(current_location, world_map, enemies):
+def print_map(current_location, world_map, animals):
     # Must be odd
     map_width, map_height = 9, 7
     row = build_map_divider(map_width)
@@ -56,7 +56,7 @@ def print_map(current_location, world_map, enemies):
             if coordinates == '0,0':
                 # Trailing asterisk if origin
                 output += '°'
-            elif coordinates in enemies:
+            elif coordinates in animals:
                 output += '‡'
             else:
                 # Trailing blank for spacing
