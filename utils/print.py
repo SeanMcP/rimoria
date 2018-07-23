@@ -56,7 +56,7 @@ def print_map(current_location, world_map, animals):
             if coordinates == '0,0':
                 # Trailing asterisk if origin
                 output += '°'
-            elif coordinates in animals:
+            elif coordinates in animals and animals[coordinates]:
                 output += '‡'
             else:
                 # Trailing blank for spacing
