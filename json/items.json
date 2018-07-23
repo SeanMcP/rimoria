@@ -1,15 +1,165 @@
 {
+    "amulet": {
+        "description": "A golden necklace with possibly magical powers.",
+        "energy": -10,
+        "experience": 2,
+        "source": "copper+gem"
+    },
+    "caviar": {
+        "description": "Dark circular eggs with a distinctly fishy and salty smell.",
+        "energy": 50,
+        "experience": 2,
+        "source": "fish+fish"
+    },
+    "cha ruoi": {
+        "description": "A seasonal omelette made with eggs, onions, dill, and sandworms.",
+        "energy": 20,
+        "experience": 2,
+        "source": "worm+worm"
+    },
+    "copper": {
+        "description": "A refined piece of malleable and conductive metal.",
+        "energy": -10,
+        "experience": 4,
+        "source": "fire+ore"
+    },
+    "corner": {
+        "description": "Two stone walls connected at a 90° angle.",
+        "energy": false,
+        "experience": 8,
+        "source": "wall+wall"
+    },
+    "eel": {
+        "description": "A snakelike fish that pulses electricity.",
+        "energy": -10,
+        "experience": 2,
+        "source": "fish+worm"
+    },
+    "fire": {
+        "description": "A small flame from wood gathered in the forest.",
+        "energy": false,
+        "experience": 2,
+        "source": "wood+wood"
+    },
     "fish": {
         "description": "Dark fresh-water trout with light spots.",
         "energy": 20,
         "experience": 2,
         "source": "lake"
     },
+    "fish stick": {
+        "description": "Battered and deep-fried fish fillets.",
+        "energy": 30,
+        "experience": 2,
+        "source": "fish+wood"
+    },
+    "flatworm": {
+        "description": "A flat invertebrate that feeds and breathes by diffusion.",
+        "energy": 5,
+        "experience": 1,
+        "source": "rock+worm"
+    },
+    "gem": {
+        "description": "Sparkling minerals of various hues.",
+        "energy": -10,
+        "experience": 2,
+        "source": "cave"
+    },
+    "hammer": {
+        "description": "A simple tool formed from a stone wedged between a forked stick.",
+        "energy": -10,
+        "experience": 2,
+        "source": "stone block+wood"
+    },
+    "meat": {
+        "description": "A smokey and greasy meat from a bear.",
+        "energy": 80,
+        "experience": 4,
+        "source": "bear"
+    },
+    "ore": {
+        "description": "A glob of orange brown metal with flecks of green.",
+        "energy": -10,
+        "experience": 2,
+        "source": "desert"
+    },
+    "pelt": {
+        "description": "A beautiful, solf, and warm animal fur.",
+        "energy": -10,
+        "experience": 4,
+        "source": "cougar"
+    },
+    "perimeter": {
+        "description": "A 256 square foot enclosure.",
+        "energy": false,
+        "experience": 8,
+        "source": "corner+corner"
+    },
     "rock": {
         "description": "Metamorphic rocks of various sizes.",
         "energy": -10,
         "experience": 1,
         "source": "mountain"
+    },
+    "steak": {
+        "description": "Tough and nutrient rich meat from a buffalo.",
+        "energy": 80,
+        "experience": 4,
+        "source": "buffalo"
+    },
+    "stone block": {
+        "description": "A shaped rock that would be good for toolmaking.",
+        "energy": -5,
+        "experience": 1,
+        "source": "rock+rock"
+    },
+    "stone house": {
+        "description": "A robust stone home with a wood-tile roof.",
+        "energy": false,
+        "experience": 10,
+        "source": "perimeter+wood"
+    },
+    "stonefish": {
+        "description": "A horrid-looking fish that is certainly poisonous.",
+        "energy": -100,
+        "experience": 2,
+        "source": "fish+rock"
+    },
+    "tooth": {
+        "description": "A long alligator tooth that is possible good for making a weapon.",
+        "energy": -10,
+        "experience": 4,
+        "source": "alligator"
+    },
+    "transistor": {
+        "description": "A semiconductor used to amplify or switch electronic signals.",
+        "energy": -10,
+        "experience": 4,
+        "source": "copper+eel"
+    },
+    "treasure chest": {
+        "description": "A jewel-encrusted box perfect for holding small trinkets.",
+        "energy": false,
+        "experience": 2,
+        "source": "gem+wood"
+    },
+    "venison": {
+        "description": "A gamey meat from a deer.",
+        "energy": 60,
+        "experience": 4,
+        "source": "deer"
+    },
+    "venom": {
+        "description": "A toxic liquid extracted from a scorpion.",
+        "energy": -100,
+        "experience": 4,
+        "source": "scorpion"
+    },
+    "wall": {
+        "description": "An 8 foot by 16 foot section of stone block.",
+        "energy": false,
+        "experience": 4,
+        "source": "stone block+stone block"
     },
     "wood": {
         "description": "Bits of branches and bark gathered from the forest floor.",
@@ -23,160 +173,10 @@
         "experience": 1,
         "source": "plain"
     },
-    "ore": {
-        "description": "A glob of orange brown metal with flecks of green.",
-        "energy": -10,
-        "experience": 2,
-        "source": "desert"
-    },
-    "gem": {
-        "description": "Sparkling minerals of various hues.",
-        "energy": -10,
-        "experience": 2,
-        "source": "cave"
-    },
-    "caviar": {
-        "description": "Dark circular eggs with a distinctly fishy and salty smell.",
-        "energy": 50,
-        "experience": 2,
-        "source": "fish+fish"
-    },
-    "stonefish": {
-        "description": "A horrid-looking fish that is certainly poisonous.",
-        "energy": -100,
-        "experience": 2,
-        "source": "fish+rock"
-    },
-    "fish stick": {
-        "description": "Battered and deep-fried fish fillets.",
-        "energy": 30,
-        "experience": 2,
-        "source": "fish+wood"
-    },
-    "eel": {
-        "description": "A snakelike fish that pulses electricity.",
-        "energy": -10,
-        "experience": 2,
-        "source": "fish+worm"
-    },
-    "stone block": {
-        "description": "A shaped rock that would be good for toolmaking.",
-        "energy": -5,
-        "experience": 1,
-        "source": "rock+rock"
-    },
-    "hammer": {
-        "description": "A simple tool formed from a stone wedged between a forked stick.",
-        "energy": -10,
-        "experience": 2,
-        "source": "stone block+wood"
-    },
-    "flatworm": {
-        "description": "A flat invertebrate that feeds and breathes by diffusion.",
-        "energy": 5,
-        "experience": 1,
-        "source": "rock+worm"
-    },
-    "fire": {
-        "description": "A small flame from wood gathered in the forest.",
-        "energy": false,
-        "experience": 2,
-        "source": "wood+wood"
-    },
     "wormwood": {
         "description": "A bitter yet aromatic shrub with possibly medicinal properties.",
         "energy": 10,
         "experience": 1,
         "source": "wood+worm"
-    },
-    "cha ruoi": {
-        "description": "A seasonal omelette made with eggs, onions, dill, and sandworms.",
-        "energy": 20,
-        "experience": 2,
-        "source": "worm+worm"
-    },
-    "treasure chest": {
-        "description": "A jewel-encrusted box perfect for holding small trinkets.",
-        "energy": false,
-        "experience": 2,
-        "source": "gem+wood"
-    },
-    "amulet": {
-        "description": "A golden necklace with possibly magical powers.",
-        "energy": -10,
-        "experience": 2,
-        "source": "copper+gem"
-    },
-    "copper": {
-        "description": "A refined piece of malleable and conductive metal.",
-        "energy": -10,
-        "experience": 4,
-        "source": "fire+ore"
-    },
-    "transistor": {
-        "description": "A semiconductor used to amplify or switch electronic signals.",
-        "energy": -10,
-        "experience": 4,
-        "source": "copper+eel"
-    },
-    "steak": {
-        "description": "Tough and nutrient rich meat from a buffalo.",
-        "energy": 80,
-        "experience": 4,
-        "source": "buffalo"
-    },
-    "pelt": {
-        "description": "A beautiful, solf, and warm animal fur.",
-        "energy": -10,
-        "experience": 4,
-        "source": "cougar"
-    },
-    "tooth": {
-        "description": "A long alligator tooth that is possible good for making a weapon.",
-        "energy": -10,
-        "experience": 4,
-        "source": "alligator"
-    },
-    "venom": {
-        "description": "A toxic liquid extracted from a scorpion.",
-        "energy": -100,
-        "experience": 4,
-        "source": "scorpion"
-    },
-    "venison": {
-        "description": "A gamey meat from a deer.",
-        "energy": 60,
-        "experience": 4,
-        "source": "deer"
-    },
-    "meat": {
-        "description": "A smokey and greasy meat from a bear.",
-        "energy": 80,
-        "experience": 4,
-        "source": "bear"
-    },
-    "wall": {
-        "description": "An 8 foot by 16 foot section of stone block.",
-        "energy": false,
-        "experience": 4,
-        "source": "stone block+stone block"
-    },
-    "corner": {
-        "description": "Two stone walls connected at a 90° angle.",
-        "energy": false,
-        "experience": 8,
-        "source": "wall+wall"
-    },
-    "perimeter": {
-        "description": "A 256 square foot enclosure.",
-        "energy": false,
-        "experience": 8,
-        "source": "corner+corner"
-    },
-    "stone house": {
-        "description": "A robust stone home with a wood-tile roof.",
-        "energy": false,
-        "experience": 10,
-        "source": "perimeter+wood"
     }
 }

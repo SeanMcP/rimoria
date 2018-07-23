@@ -1,4 +1,22 @@
 {
+    "alligator": {
+        "description": "A scaled reptile with a large mouth and sharp teeth.",
+        "energy": 30,
+        "experience": 10,
+        "resource": "tooth",
+        "source": "lake",
+        "speed": 2,
+        "strength": 30
+    },
+    "bear": {
+        "description": "A black beast with large paws and sharp claws.",
+        "energy": 50,
+        "experience": 10,
+        "resource": "meat",
+        "source": "cave",
+        "speed": 3,
+        "strength": 25
+    },
     "buffalo": {
         "description": "A great bison with a broad head and sharp horns.",
         "energy": 70,
@@ -17,24 +35,6 @@
         "speed": 4,
         "strength": 10
     },
-    "alligator": {
-        "description": "A scaled reptile with a large mouth and sharp teeth.",
-        "energy": 30,
-        "experience": 10,
-        "resource": "tooth",
-        "source": "lake",
-        "speed": 2,
-        "strength": 30
-    },
-    "scorpion": {
-        "description": "A small arachnid with two pincers and a venomous stringer.",
-        "energy": 5,
-        "experience": 10,
-        "resource": "venom",
-        "source": "desert",
-        "speed": 1,
-        "strength": 50
-    },
     "deer": {
         "description": "A hoofed herbavore with thin yet powerful legs.",
         "energy": 10,
@@ -44,13 +44,13 @@
         "speed": 5,
         "strength": 5
     },
-    "bear": {
-        "description": "A black beast with large paws and sharp claws.",
-        "energy": 50,
+    "scorpion": {
+        "description": "A small arachnid with two pincers and a venomous stringer.",
+        "energy": 5,
         "experience": 10,
-        "resource": "meat",
-        "source": "cave",
-        "speed": 3,
-        "strength": 25
+        "resource": "venom",
+        "source": "desert",
+        "speed": 1,
+        "strength": 50
     }
 }
