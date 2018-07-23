@@ -73,7 +73,7 @@
     },
     "flatworm": {
         "description": "A flat invertebrate that feeds and breathes by diffusion.",
-        "energy": 1,
+        "energy": 5,
         "experience": 1,
         "source": "rock+worm"
     },
@@ -89,10 +89,10 @@
         "experience": 1,
         "source": "wood+worm"
     },
-    "cocoon": {
-        "description": "A lemon-shaped worm incubator that is the size of your pinky thumb-nail.",
-        "energy": 1,
-        "experience": 1,
+    "cha ruoi": {
+        "description": "A seasonal omelette made with eggs, onions, dill, and sandworms.",
+        "energy": 20,
+        "experience": 2,
         "source": "worm+worm"
     },
     "treasure chest": {
@@ -121,7 +121,7 @@
     },
     "steak": {
         "description": "Tough and nutrient rich meat from a buffalo.",
-        "energy": 60,
+        "energy": 80,
         "experience": 4,
         "source": "buffalo"
     },
@@ -151,8 +151,32 @@
     },
     "meat": {
         "description": "A smokey and greasy meat from a bear.",
-        "energy": 60,
+        "energy": 80,
         "experience": 4,
         "source": "bear"
+    },
+    "wall": {
+        "description": "An 8 foot by 16 foot section of stone block.",
+        "energy": false,
+        "experience": 4,
+        "source": "stone block+stone block"
+    },
+    "corner": {
+        "description": "Two stone walls connected at a 90° angle.",
+        "energy": false,
+        "experience": 8,
+        "source": "wall+wall"
+    },
+    "perimeter": {
+        "description": "A 256 square foot enclosure.",
+        "energy": false,
+        "experience": 8,
+        "source": "corner+corner"
+    },
+    "stone house": {
+        "description": "A robust stone home with a wood-tile roof.",
+        "energy": false,
+        "experience": 10,
+        "source": "perimeter+wood"
     }
 }
