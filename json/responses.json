@@ -4,7 +4,13 @@
             "You cannot assemble those items.",
         "eat":
             "You cannot eat that item.",
+        "run":
+            "You try to run but are unable to escape!",
         "unknown":
             "I do not understand."
+    },
+    "success": {
+        "run":
+            "You manage to run away."
     }
 }

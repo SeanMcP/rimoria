@@ -136,11 +136,11 @@ def action_run():
     player_roll = random.randint(1, 20) + player.strength
     animal_roll = random.randint(1, 20) + animal.speed
     if animal.is_angry and player_roll < animal_roll:
-        new_line('You try to run but are unable to escape!')
+        new_line(res('fail.run'))
         player.tire()
         animal_decide()
     else:
-        new_line('You manage to run away.')
+        new_line(res('success.run'))
         directions = ['n', 'e', 's', 'w']
         mode = 'explore'
         action_navigate(directions[random.randint(0, len(directions) - 1)])
