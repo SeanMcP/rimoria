@@ -3,7 +3,7 @@ from classes.AnimalClass import Animal
 from classes.ExplorerClass import Explorer
 from classes.TerrainClass import Terrain
 from utils.data import get_item, get_items, res
-from utils.print import new_line, new_line_input, print_map
+from utils.print import gameover_results, new_line, new_line_input, print_map
 
 animals = { '0,0': None }
 location = ['0,0']
@@ -81,7 +81,7 @@ def status_check():
             'explore': explore
         }
         options[mode]()
-    new_line('Game over')
+    gameover_results(player, world_map)
 
 def encounter():
     action_input = new_line_input('What do you want to do: look, run, feed, or attack?').lower()

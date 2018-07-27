@@ -57,6 +57,7 @@ def print_map(current_location, world_map, animals):
                 # Trailing asterisk if origin
                 output += '°'
             elif coordinates in animals and animals[coordinates]:
+                # Trailing dagger if animal
                 output += '‡'
             else:
                 # Trailing blank for spacing
@@ -79,3 +80,15 @@ def build_map_divider(width):
         if _ == width - 1:
             output += '\n'
     return output
+
+def gameover_results(player, map):
+    score = player.level * 1000 + len(map) * 100
+    print(f'''
+GAME OVER
+
+Explorer name:     {player.name}
+Final level:       {player.level}
+Terrains explored: {len(map)}
+
+FINAL SCORE:       {score}
+''')
