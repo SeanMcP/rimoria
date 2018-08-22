@@ -165,6 +165,8 @@ def action_feed():
                 player.collect(animal.resource)
             mode = 'explore'
             animals[location[0]] = None
+    elif selection == 'nothing':
+        return new_line('Best to save your food for later.')
     else:
         return new_line(res('fail.unknown'))
 
